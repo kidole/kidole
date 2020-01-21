@@ -1,0 +1,36 @@
+{
+    "name": "MatchSheet",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resume",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isfirst",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "confrontation",
+            "otherEntityRelationshipName": "matchSheet",
+            "relationshipName": "confrontation",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200121173506",
+    "entityTableName": "match_sheet",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

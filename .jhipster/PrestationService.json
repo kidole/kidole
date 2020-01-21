@@ -1,0 +1,58 @@
+{
+    "name": "PrestationService",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "rubrique",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "rubrique",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "files"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "localisation"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "competitionservicejoined",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "competitionservicejoined",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200121173516",
+    "entityTableName": "prestation_service",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

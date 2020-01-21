@@ -1,0 +1,193 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-profile-heading" jhiTranslate="kidoleApp.profile.home.createOrEditLabel">Create or edit a Profile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.gender" for="field_gender" [ngbTooltip]="'kidoleApp.profile.help.gender' | translate">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="MALE">{{'kidoleApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'kidoleApp.Gender.FEMALE' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gender')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.photo" for="field_photo" [ngbTooltip]="'kidoleApp.profile.help.photo' | translate">Photo</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value" style="max-height: 100px;" *ngIf="editForm.get('photo')!.value" alt="profile image"/>
+                        <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('photoContentType')!.value}}, {{byteSize(editForm.get('photo')!.value)}}</span>
+                            <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'file_photo')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_photo" (change)="setFileData($event, 'photo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="photo" id="field_photo"
+                           formControlName="photo"/>
+                    <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                           formControlName="photoContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.isAccreditated" for="field_isAccreditated" [ngbTooltip]="'kidoleApp.profile.help.isAccreditated' | translate">Is Accreditated</label>
+                    <input type="checkbox" class="form-control" name="isAccreditated" id="field_isAccreditated"
+                           formControlName="isAccreditated"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.accreditationtype" for="field_accreditationtype" [ngbTooltip]="'kidoleApp.profile.help.accreditationtype' | translate">Accreditationtype</label>
+                    <select class="form-control" name="accreditationtype" formControlName="accreditationtype" id="field_accreditationtype">
+                        <option value="ATHLETE">{{'kidoleApp.AccreditationList.ATHLETE' | translate}}</option>
+                        <option value="SPARING">{{'kidoleApp.AccreditationList.SPARING' | translate}}</option>
+                        <option value="TRAINNER">{{'kidoleApp.AccreditationList.TRAINNER' | translate}}</option>
+                        <option value="TEAM_OFFICIAL">{{'kidoleApp.AccreditationList.TEAM_OFFICIAL' | translate}}</option>
+                        <option value="ARBITRE">{{'kidoleApp.AccreditationList.ARBITRE' | translate}}</option>
+                        <option value="COMMITY_MEMBER_LOCAL">{{'kidoleApp.AccreditationList.COMMITY_MEMBER_LOCAL' | translate}}</option>
+                        <option value="DIGNITAIRE">{{'kidoleApp.AccreditationList.DIGNITAIRE' | translate}}</option>
+                        <option value="SPECIAL_INVITEE">{{'kidoleApp.AccreditationList.SPECIAL_INVITEE' | translate}}</option>
+                        <option value="COMMITY_MEMBER_NATIONAL">{{'kidoleApp.AccreditationList.COMMITY_MEMBER_NATIONAL' | translate}}</option>
+                        <option value="VOLONTEER">{{'kidoleApp.AccreditationList.VOLONTEER' | translate}}</option>
+                        <option value="PRESS_AGENT">{{'kidoleApp.AccreditationList.PRESS_AGENT' | translate}}</option>
+                        <option value="SECURITY_AGENT">{{'kidoleApp.AccreditationList.SECURITY_AGENT' | translate}}</option>
+                        <option value="SPONSOR">{{'kidoleApp.AccreditationList.SPONSOR' | translate}}</option>
+                        <option value="PARTNER">{{'kidoleApp.AccreditationList.PARTNER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.dateOfBirth" for="field_dateOfBirth" [ngbTooltip]="'kidoleApp.profile.help.dateOfBirth' | translate">Date Of Birth</label>
+                    <div class="d-flex">
+                        <input id="field_dateOfBirth" type="datetime-local" class="form-control" name="dateOfBirth" formControlName="dateOfBirth" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.placeOfBbirth" for="field_placeOfBbirth" [ngbTooltip]="'kidoleApp.profile.help.placeOfBbirth' | translate">Place Of Bbirth</label>
+                    <input type="text" class="form-control" name="placeOfBbirth" id="field_placeOfBbirth"
+                           formControlName="placeOfBbirth"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.clubOrigin" for="field_clubOrigin" [ngbTooltip]="'kidoleApp.profile.help.clubOrigin' | translate">Club Origin</label>
+                    <input type="text" class="form-control" name="clubOrigin" id="field_clubOrigin"
+                           formControlName="clubOrigin"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.nationality" for="field_nationality" [ngbTooltip]="'kidoleApp.profile.help.nationality' | translate">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" id="field_nationality"
+                           formControlName="nationality"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.height" for="field_height" [ngbTooltip]="'kidoleApp.profile.help.height' | translate">Height</label>
+                    <input type="number" class="form-control" name="height" id="field_height"
+                           formControlName="height"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.weight" for="field_weight" [ngbTooltip]="'kidoleApp.profile.help.weight' | translate">Weight</label>
+                    <input type="number" class="form-control" name="weight" id="field_weight"
+                           formControlName="weight"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.manuality" for="field_manuality" [ngbTooltip]="'kidoleApp.profile.help.manuality' | translate">Manuality</label>
+                    <input type="text" class="form-control" name="manuality" id="field_manuality"
+                           formControlName="manuality"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.nic" for="field_nic" [ngbTooltip]="'kidoleApp.profile.help.nic' | translate">Nic</label>
+                    <input type="text" class="form-control" name="nic" id="field_nic"
+                           formControlName="nic"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.phone" for="field_phone" [ngbTooltip]="'kidoleApp.profile.help.phone' | translate">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.discipline" for="field_discipline" [ngbTooltip]="'kidoleApp.profile.help.discipline' | translate">Discipline</label>
+                    <input type="text" class="form-control" name="discipline" id="field_discipline"
+                           formControlName="discipline"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.categorie" for="field_categorie" [ngbTooltip]="'kidoleApp.profile.help.categorie' | translate">Categorie</label>
+                    <input type="text" class="form-control" name="categorie" id="field_categorie"
+                           formControlName="categorie"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.teamName" for="field_teamName" [ngbTooltip]="'kidoleApp.profile.help.teamName' | translate">Team Name</label>
+                    <input type="text" class="form-control" name="teamName" id="field_teamName"
+                           formControlName="teamName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.fonction" for="field_fonction" [ngbTooltip]="'kidoleApp.profile.help.fonction' | translate">Fonction</label>
+                    <input type="text" class="form-control" name="fonction" id="field_fonction"
+                           formControlName="fonction"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.titre" for="field_titre" [ngbTooltip]="'kidoleApp.profile.help.titre' | translate">Titre</label>
+                    <input type="text" class="form-control" name="titre" id="field_titre"
+                           formControlName="titre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.residentCity" for="field_residentCity" [ngbTooltip]="'kidoleApp.profile.help.residentCity' | translate">Resident City</label>
+                    <input type="text" class="form-control" name="residentCity" id="field_residentCity"
+                           formControlName="residentCity"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.pressID" for="field_pressID" [ngbTooltip]="'kidoleApp.profile.help.pressID' | translate">Press ID</label>
+                    <input type="text" class="form-control" name="pressID" id="field_pressID"
+                           formControlName="pressID"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.pressAgence" for="field_pressAgence" [ngbTooltip]="'kidoleApp.profile.help.pressAgence' | translate">Press Agence</label>
+                    <input type="text" class="form-control" name="pressAgence" id="field_pressAgence"
+                           formControlName="pressAgence"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.bataillonRattachement" for="field_bataillonRattachement" [ngbTooltip]="'kidoleApp.profile.help.bataillonRattachement' | translate">Bataillon Rattachement</label>
+                    <input type="text" class="form-control" name="bataillonRattachement" id="field_bataillonRattachement"
+                           formControlName="bataillonRattachement"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.socialDenomination" for="field_socialDenomination" [ngbTooltip]="'kidoleApp.profile.help.socialDenomination' | translate">Social Denomination</label>
+                    <input type="text" class="form-control" name="socialDenomination" id="field_socialDenomination"
+                           formControlName="socialDenomination"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.locationBuilding" for="field_locationBuilding" [ngbTooltip]="'kidoleApp.profile.help.locationBuilding' | translate">Location Building</label>
+                    <input type="text" class="form-control" name="locationBuilding" id="field_locationBuilding"
+                           formControlName="locationBuilding"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.userAccreditation" for="field_userAccreditation">User Accreditation</label>
+                    <select class="form-control" id="field_userAccreditation" name="userAccreditation" formControlName="userAccreditationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="accreditationOption.id" *ngFor="let accreditationOption of useraccreditations; trackBy: trackById">{{accreditationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

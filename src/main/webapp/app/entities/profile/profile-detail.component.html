@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profile">
+            <h2><span jhiTranslate="kidoleApp.profile.detail.title">Profile</span> {{profile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.profile.gender" [ngbTooltip]="'kidoleApp.profile.help.gender' | translate">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.Gender.' + profile.gender}}">{{profile.gender}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.photo" [ngbTooltip]="'kidoleApp.profile.help.photo' | translate">Photo</span></dt>
+                <dd>
+                    <div *ngIf="profile.photo">
+                        <a (click)="openFile(profile.photoContentType!, profile.photo)">
+                            <img [src]="'data:' + profile.photoContentType + ';base64,' + profile.photo" style="max-width: 100%;" alt="profile image"/>
+                        </a>
+                        {{profile.photoContentType}}, {{byteSize(profile.photo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.isAccreditated" [ngbTooltip]="'kidoleApp.profile.help.isAccreditated' | translate">Is Accreditated</span></dt>
+                <dd>
+                    <span>{{profile.isAccreditated}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.accreditationtype" [ngbTooltip]="'kidoleApp.profile.help.accreditationtype' | translate">Accreditationtype</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.AccreditationList.' + profile.accreditationtype}}">{{profile.accreditationtype}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.dateOfBirth" [ngbTooltip]="'kidoleApp.profile.help.dateOfBirth' | translate">Date Of Birth</span></dt>
+                <dd>
+                    <span>{{profile.dateOfBirth}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.placeOfBbirth" [ngbTooltip]="'kidoleApp.profile.help.placeOfBbirth' | translate">Place Of Bbirth</span></dt>
+                <dd>
+                    <span>{{profile.placeOfBbirth}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.clubOrigin" [ngbTooltip]="'kidoleApp.profile.help.clubOrigin' | translate">Club Origin</span></dt>
+                <dd>
+                    <span>{{profile.clubOrigin}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.nationality" [ngbTooltip]="'kidoleApp.profile.help.nationality' | translate">Nationality</span></dt>
+                <dd>
+                    <span>{{profile.nationality}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.height" [ngbTooltip]="'kidoleApp.profile.help.height' | translate">Height</span></dt>
+                <dd>
+                    <span>{{profile.height}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.weight" [ngbTooltip]="'kidoleApp.profile.help.weight' | translate">Weight</span></dt>
+                <dd>
+                    <span>{{profile.weight}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.manuality" [ngbTooltip]="'kidoleApp.profile.help.manuality' | translate">Manuality</span></dt>
+                <dd>
+                    <span>{{profile.manuality}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.nic" [ngbTooltip]="'kidoleApp.profile.help.nic' | translate">Nic</span></dt>
+                <dd>
+                    <span>{{profile.nic}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.phone" [ngbTooltip]="'kidoleApp.profile.help.phone' | translate">Phone</span></dt>
+                <dd>
+                    <span>{{profile.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.discipline" [ngbTooltip]="'kidoleApp.profile.help.discipline' | translate">Discipline</span></dt>
+                <dd>
+                    <span>{{profile.discipline}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.categorie" [ngbTooltip]="'kidoleApp.profile.help.categorie' | translate">Categorie</span></dt>
+                <dd>
+                    <span>{{profile.categorie}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.teamName" [ngbTooltip]="'kidoleApp.profile.help.teamName' | translate">Team Name</span></dt>
+                <dd>
+                    <span>{{profile.teamName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.fonction" [ngbTooltip]="'kidoleApp.profile.help.fonction' | translate">Fonction</span></dt>
+                <dd>
+                    <span>{{profile.fonction}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.titre" [ngbTooltip]="'kidoleApp.profile.help.titre' | translate">Titre</span></dt>
+                <dd>
+                    <span>{{profile.titre}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.residentCity" [ngbTooltip]="'kidoleApp.profile.help.residentCity' | translate">Resident City</span></dt>
+                <dd>
+                    <span>{{profile.residentCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.pressID" [ngbTooltip]="'kidoleApp.profile.help.pressID' | translate">Press ID</span></dt>
+                <dd>
+                    <span>{{profile.pressID}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.pressAgence" [ngbTooltip]="'kidoleApp.profile.help.pressAgence' | translate">Press Agence</span></dt>
+                <dd>
+                    <span>{{profile.pressAgence}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.bataillonRattachement" [ngbTooltip]="'kidoleApp.profile.help.bataillonRattachement' | translate">Bataillon Rattachement</span></dt>
+                <dd>
+                    <span>{{profile.bataillonRattachement}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.socialDenomination" [ngbTooltip]="'kidoleApp.profile.help.socialDenomination' | translate">Social Denomination</span></dt>
+                <dd>
+                    <span>{{profile.socialDenomination}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.locationBuilding" [ngbTooltip]="'kidoleApp.profile.help.locationBuilding' | translate">Location Building</span></dt>
+                <dd>
+                    <span>{{profile.locationBuilding}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.user">User</span></dt>
+                <dd>
+                    {{profile.userId}}
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.profile.userAccreditation">User Accreditation</span></dt>
+                <dd>
+                    <div *ngIf="profile.userAccreditationId">
+                        <a [routerLink]="['/accreditation', profile.userAccreditationId, 'view']">{{profile.userAccreditationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profile', profile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

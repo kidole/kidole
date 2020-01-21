@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Competitionservicejoined.
+    -->
+    <changeSet id="20200121173519-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="prestation_service_id"
+                                 baseTableName="competitionservicejoined"
+                                 constraintName="fk_competitionservicejoined_prestation_service_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prestation_service"/>
+
+        <addForeignKeyConstraint baseColumnNames="competition_id"
+                                 baseTableName="competitionservicejoined"
+                                 constraintName="fk_competitionservicejoined_competition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="competition"/>
+
+    </changeSet>
+</databaseChangeLog>

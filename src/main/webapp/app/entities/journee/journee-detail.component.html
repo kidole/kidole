@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="journee">
+            <h2><span jhiTranslate="kidoleApp.journee.detail.title">Journee</span> {{journee.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.journee.name">Name</span></dt>
+                <dd>
+                    <span>{{journee.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.journee.phase">Phase</span></dt>
+                <dd>
+                    <div *ngIf="journee.phaseId">
+                        <a [routerLink]="['/phase', journee.phaseId, 'view']">{{journee.phaseId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/journee', journee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

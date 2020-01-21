@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.delegationMembers.home.title">Delegation Members</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-delegation-members" [routerLink]="['/delegation-members/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kidoleApp.delegationMembers.home.createLabel">
+            Create a new Delegation Members
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="delegationMembers?.length === 0">
+        <span jhiTranslate="kidoleApp.delegationMembers.home.notFound">No delegationMembers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="delegationMembers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.delegationMembers.state">State</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.delegationMembers.code1">Code 1</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.delegationMembers.detail">Detail</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let delegationMembers of delegationMembers ;trackBy: trackId">
+                <td><a [routerLink]="['/delegation-members', delegationMembers.id, 'view' ]">{{delegationMembers.id}}</a></td>
+                <td>{{delegationMembers.state}}</td>
+                <td>{{delegationMembers.code1}}</td>
+                <td>{{delegationMembers.detail}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/delegation-members', delegationMembers.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/delegation-members', delegationMembers.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(delegationMembers)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

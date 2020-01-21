@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.competitionServicesOffer.home.title">Competition Services Offers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-competition-services-offer" [routerLink]="['/competition-services-offer/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kidoleApp.competitionServicesOffer.home.createLabel">
+            Create a new Competition Services Offer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="competitionServicesOffers?.length === 0">
+        <span jhiTranslate="kidoleApp.competitionServicesOffer.home.notFound">No competitionServicesOffers found</span>
+    </div>
+    <div class="table-responsive" *ngIf="competitionServicesOffers?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competitionServicesOffer.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competitionServicesOffer.details">Details</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competitionServicesOffer.url">Url</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competitionServicesOffer.rubrique">Rubrique</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competitionServicesOffer.competition">Competition</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let competitionServicesOffer of competitionServicesOffers ;trackBy: trackId">
+                <td><a [routerLink]="['/competition-services-offer', competitionServicesOffer.id, 'view' ]">{{competitionServicesOffer.id}}</a></td>
+                <td>{{competitionServicesOffer.name}}</td>
+                <td>{{competitionServicesOffer.details}}</td>
+                <td>{{competitionServicesOffer.url}}</td>
+                <td>
+                    <div *ngIf="competitionServicesOffer.rubriqueId">
+                        <a [routerLink]="['/rubrique', competitionServicesOffer.rubriqueId , 'view' ]" >{{competitionServicesOffer.rubriqueId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="competitionServicesOffer.competitionId">
+                        <a [routerLink]="['/competition', competitionServicesOffer.competitionId , 'view' ]" >{{competitionServicesOffer.competitionId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/competition-services-offer', competitionServicesOffer.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/competition-services-offer', competitionServicesOffer.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(competitionServicesOffer)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "kidoleApp": {
+    "delegation": {
+      "home": {
+        "title": "Delegations",
+        "createLabel": "Créer un nouveau Delegation",
+        "createOrEditLabel": "Créer ou éditer un Delegation",
+        "notFound": "Aucun Delegation trouvé"
+      },
+      "created": "Un nouveau Delegation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Delegation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Delegation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Delegation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Delegation"
+      },
+      "name": "Name",
+      "country": "Country",
+      "locality": "Locality",
+      "code1": "Code 1",
+      "delegationMembers": "Delegation Members",
+      "team": "Team"
+    }
+  }
+}

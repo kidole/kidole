@@ -1,0 +1,21 @@
+{
+  "kidoleApp": {
+    "AccreditationList": {
+      "null": "",
+      "ATHLETE": "ATHLETE",
+      "SPARING": "SPARING",
+      "TRAINNER": "TRAINNER",
+      "TEAM_OFFICIAL": "TEAM_OFFICIAL",
+      "ARBITRE": "ARBITRE",
+      "COMMITY_MEMBER_LOCAL": "COMMITY_MEMBER_LOCAL",
+      "DIGNITAIRE": "DIGNITAIRE",
+      "SPECIAL_INVITEE": "SPECIAL_INVITEE",
+      "COMMITY_MEMBER_NATIONAL": "COMMITY_MEMBER_NATIONAL",
+      "VOLONTEER": "VOLONTEER",
+      "PRESS_AGENT": "PRESS_AGENT",
+      "SECURITY_AGENT": "SECURITY_AGENT",
+      "SPONSOR": "SPONSOR",
+      "PARTNER": "PARTNER"
+    }
+  }
+}

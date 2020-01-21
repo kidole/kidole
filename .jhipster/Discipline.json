@@ -1,0 +1,45 @@
+{
+    "name": "Discipline",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sexGender",
+            "fieldType": "GenderSex",
+            "fieldValues": "MALE,FEMALE,MIX"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "phase",
+            "otherEntityRelationshipName": "discipline",
+            "relationshipName": "phase"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "category",
+            "otherEntityRelationshipName": "discipline",
+            "relationshipName": "category"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "discipline",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173507",
+    "entityTableName": "discipline",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

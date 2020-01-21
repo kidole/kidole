@@ -1,0 +1,73 @@
+{
+  "kidoleApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Create a new Profile",
+        "createOrEditLabel": "Create or edit a Profile",
+        "notFound": "No Profiles found"
+      },
+      "created": "A new Profile is created with identifier {{ param }}",
+      "updated": "A Profile is updated with identifier {{ param }}",
+      "deleted": "A Profile is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profile {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "gender": "Gender",
+      "photo": "Photo",
+      "isAccreditated": "Is Accreditated",
+      "accreditationtype": "Accreditationtype",
+      "dateOfBirth": "Date Of Birth",
+      "placeOfBbirth": "Place Of Bbirth",
+      "clubOrigin": "Club Origin",
+      "nationality": "Nationality",
+      "height": "Height",
+      "weight": "Weight",
+      "manuality": "Manuality",
+      "nic": "Nic",
+      "phone": "Phone",
+      "discipline": "Discipline",
+      "categorie": "Categorie",
+      "teamName": "Team Name",
+      "fonction": "Fonction",
+      "titre": "Titre",
+      "residentCity": "Resident City",
+      "pressID": "Press ID",
+      "pressAgence": "Press Agence",
+      "bataillonRattachement": "Bataillon Rattachement",
+      "socialDenomination": "Social Denomination",
+      "locationBuilding": "Location Building",
+      "user": "User",
+      "userAccreditation": "User Accreditation",
+      "help": {
+        "gender": "Gender",
+        "photo": "photo",
+        "isAccreditated": "isAccreditated",
+        "accreditationtype": "type",
+        "dateOfBirth": "date_of_birth",
+        "placeOfBbirth": "place_of_birth",
+        "clubOrigin": "club_origin",
+        "nationality": "nationality",
+        "height": "height",
+        "weight": "weight",
+        "manuality": "manuality",
+        "nic": "nic",
+        "phone": "phone",
+        "discipline": "discipline",
+        "categorie": "categorie",
+        "teamName": "teamName",
+        "fonction": "function",
+        "titre": "title",
+        "residentCity": "residentCity",
+        "pressID": "pressID",
+        "pressAgence": "pressAgence",
+        "bataillonRattachement": "bataillon_rattachement",
+        "socialDenomination": "social_denomination",
+        "locationBuilding": "location"
+      }
+    }
+  }
+}

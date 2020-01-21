@@ -1,0 +1,25 @@
+{
+  "kidoleApp": {
+    "accreditation": {
+      "home": {
+        "title": "Accreditations",
+        "createLabel": "Create a new Accreditation",
+        "createOrEditLabel": "Create or edit a Accreditation",
+        "notFound": "No Accreditations found"
+      },
+      "created": "A new Accreditation is created with identifier {{ param }}",
+      "updated": "A Accreditation is updated with identifier {{ param }}",
+      "deleted": "A Accreditation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Accreditation {{ id }}?"
+      },
+      "detail": {
+        "title": "Accreditation"
+      },
+      "name": "Name",
+      "status": "Status",
+      "details": "Details",
+      "competition": "Competition"
+    }
+  }
+}

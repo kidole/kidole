@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-confrontation-heading" jhiTranslate="kidoleApp.confrontation.home.createOrEditLabel">Create or edit a Confrontation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.debut" for="field_debut">Debut</label>
+                    <div class="d-flex">
+                        <input id="field_debut" type="datetime-local" class="form-control" name="debut" formControlName="debut" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.fin" for="field_fin">Fin</label>
+                    <div class="d-flex">
+                        <input id="field_fin" type="datetime-local" class="form-control" name="fin" formControlName="fin" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.details" for="field_details">Details</label>
+                    <textarea class="form-control" name="details" id="field_details"
+                              formControlName="details"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.matchSheet" for="field_matchSheet">Match Sheet</label>
+                    <select class="form-control" id="field_matchSheet" name="matchSheet" formControlName="matchSheetId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="matchSheetOption.id" *ngFor="let matchSheetOption of matchsheets; trackBy: trackById">{{matchSheetOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.localisation" for="field_localisation">Localisation</label>
+                    <select class="form-control" id="field_localisation" name="localisation" formControlName="localisationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="localisationOption.id" *ngFor="let localisationOption of localisations; trackBy: trackById">{{localisationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.confrontation.journee" for="field_journee">Journee</label>
+                    <select class="form-control" id="field_journee" name="journee" formControlName="journeeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="journeeOption.id" *ngFor="let journeeOption of journees; trackBy: trackById">{{journeeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

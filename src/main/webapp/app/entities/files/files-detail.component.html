@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="files">
+            <h2><span jhiTranslate="kidoleApp.files.detail.title">Files</span> {{files.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.files.name">Name</span></dt>
+                <dd>
+                    <span>{{files.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.type">Type</span></dt>
+                <dd>
+                    <span>{{files.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.publique">Publique</span></dt>
+                <dd>
+                    <span>{{files.publique}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.content">Content</span></dt>
+                <dd>
+                    <div *ngIf="files.content">
+                        <a (click)="openFile(files.contentContentType!, files.content)" jhiTranslate="entity.action.open">open</a>
+                        {{files.contentContentType}}, {{byteSize(files.content)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.competitionServicesOffer">Competition Services Offer</span></dt>
+                <dd>
+                    <div *ngIf="files.competitionServicesOfferId">
+                        <a [routerLink]="['/competition-services-offer', files.competitionServicesOfferId, 'view']">{{files.competitionServicesOfferId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.prestationService">Prestation Service</span></dt>
+                <dd>
+                    <div *ngIf="files.prestationServiceId">
+                        <a [routerLink]="['/prestation-service', files.prestationServiceId, 'view']">{{files.prestationServiceId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.rubrique">Rubrique</span></dt>
+                <dd>
+                    <div *ngIf="files.rubriqueId">
+                        <a [routerLink]="['/rubrique', files.rubriqueId, 'view']">{{files.rubriqueId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.files.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="files.competitionId">
+                        <a [routerLink]="['/competition', files.competitionId, 'view']">{{files.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/files', files.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="kidoleApp.notification.detail.title">Notification</span> {{notification.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.notification.title">Title</span></dt>
+                <dd>
+                    <span>{{notification.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.subject">Subject</span></dt>
+                <dd>
+                    <span>{{notification.subject}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.url">Url</span></dt>
+                <dd>
+                    <span>{{notification.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="notification.image">
+                        <a (click)="openFile(notification.imageContentType!, notification.image)" jhiTranslate="entity.action.open">open</a>
+                        {{notification.imageContentType}}, {{byteSize(notification.image)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.NotificationState.' + notification.status}}">{{notification.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.typeNotif">Type Notif</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.NotificationType.' + notification.typeNotif}}">{{notification.typeNotif}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

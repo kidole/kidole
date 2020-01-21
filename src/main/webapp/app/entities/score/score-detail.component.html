@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="score">
+            <h2><span jhiTranslate="kidoleApp.score.detail.title">Score</span> {{score.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.score.name">Name</span></dt>
+                <dd>
+                    <span>{{score.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.score.scoreIndex">Score Index</span></dt>
+                <dd>
+                    <span>{{score.scoreIndex}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.score.value">Value</span></dt>
+                <dd>
+                    <span>{{score.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.score.unite">Unite</span></dt>
+                <dd>
+                    <span>{{score.unite}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.score.team">Team</span></dt>
+                <dd>
+                    <div *ngIf="score.teamId">
+                        <a [routerLink]="['/team', score.teamId, 'view']">{{score.teamId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.score.confrontation">Confrontation</span></dt>
+                <dd>
+                    <div *ngIf="score.confrontationId">
+                        <a [routerLink]="['/confrontation', score.confrontationId, 'view']">{{score.confrontationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/score', score.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

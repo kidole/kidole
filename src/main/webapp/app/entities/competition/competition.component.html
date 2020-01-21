@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.competition.home.title">Competitions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-competition" [routerLink]="['/competition/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kidoleApp.competition.home.createLabel">
+            Create a new Competition
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="competitions?.length === 0">
+        <span jhiTranslate="kidoleApp.competition.home.notFound">No competitions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="competitions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.debut">Debut</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.fin">Fin</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.dateLimit">Date Limit</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.detail">Detail</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.competition.role">Role</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let competition of competitions ;trackBy: trackId">
+                <td><a [routerLink]="['/competition', competition.id, 'view' ]">{{competition.id}}</a></td>
+                <td>{{competition.name}}</td>
+                <td>{{competition.debut | date:'medium'}}</td>
+                <td>{{competition.fin | date:'medium'}}</td>
+                <td>{{competition.dateLimit | date:'medium'}}</td>
+                <td>{{competition.detail}}</td>
+                <td>
+                    <a *ngIf="competition.role" (click)="openFile(competition.roleContentType, competition.role)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="competition.role">{{competition.roleContentType}}, {{byteSize(competition.role)}}</span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/competition', competition.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/competition', competition.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(competition)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

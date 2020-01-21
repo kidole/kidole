@@ -1,0 +1,160 @@
+{
+    "name": "Profile",
+    "fields": [
+        {
+            "fieldName": "gender",
+            "javadoc": "Gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "photo",
+            "javadoc": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "isAccreditated",
+            "javadoc": "isAccreditated",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "accreditationtype",
+            "javadoc": "type",
+            "fieldType": "AccreditationList",
+            "fieldValues": "ATHLETE,SPARING,TRAINNER,TEAM_OFFICIAL,ARBITRE,COMMITY_MEMBER_LOCAL,DIGNITAIRE,SPECIAL_INVITEE,COMMITY_MEMBER_NATIONAL,VOLONTEER,PRESS_AGENT,SECURITY_AGENT,SPONSOR,PARTNER"
+        },
+        {
+            "fieldName": "dateOfBirth",
+            "javadoc": "date_of_birth",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "placeOfBbirth",
+            "javadoc": "place_of_birth",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "clubOrigin",
+            "javadoc": "club_origin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nationality",
+            "javadoc": "nationality",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "height",
+            "javadoc": "height",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "weight",
+            "javadoc": "weight",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "manuality",
+            "javadoc": "manuality",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nic",
+            "javadoc": "nic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "javadoc": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "discipline",
+            "javadoc": "discipline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "categorie",
+            "javadoc": "categorie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "teamName",
+            "javadoc": "teamName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fonction",
+            "javadoc": "function",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titre",
+            "javadoc": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "residentCity",
+            "javadoc": "residentCity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pressID",
+            "javadoc": "pressID",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pressAgence",
+            "javadoc": "pressAgence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bataillonRattachement",
+            "javadoc": "bataillon_rattachement",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "socialDenomination",
+            "javadoc": "social_denomination",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "locationBuilding",
+            "javadoc": "location",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "profile",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "accreditation",
+            "otherEntityRelationshipName": "profile",
+            "relationshipName": "userAccreditation",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200121173459",
+    "javadoc": "The Profil entity.\\n@author joel jorle",
+    "entityTableName": "profile",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

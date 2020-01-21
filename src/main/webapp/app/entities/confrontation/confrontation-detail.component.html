@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="confrontation">
+            <h2><span jhiTranslate="kidoleApp.confrontation.detail.title">Confrontation</span> {{confrontation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.confrontation.name">Name</span></dt>
+                <dd>
+                    <span>{{confrontation.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.debut">Debut</span></dt>
+                <dd>
+                    <span>{{confrontation.debut}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.fin">Fin</span></dt>
+                <dd>
+                    <span>{{confrontation.fin}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.details">Details</span></dt>
+                <dd>
+                    <span>{{confrontation.details}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.matchSheet">Match Sheet</span></dt>
+                <dd>
+                    <div *ngIf="confrontation.matchSheetId">
+                        <a [routerLink]="['/match-sheet', confrontation.matchSheetId, 'view']">{{confrontation.matchSheetId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.localisation">Localisation</span></dt>
+                <dd>
+                    <div *ngIf="confrontation.localisationId">
+                        <a [routerLink]="['/localisation', confrontation.localisationId, 'view']">{{confrontation.localisationId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.confrontation.journee">Journee</span></dt>
+                <dd>
+                    <div *ngIf="confrontation.journeeId">
+                        <a [routerLink]="['/journee', confrontation.journeeId, 'view']">{{confrontation.journeeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/confrontation', confrontation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

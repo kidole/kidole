@@ -1,0 +1,30 @@
+{
+  "kidoleApp": {
+    "confrontation": {
+      "home": {
+        "title": "Confrontations",
+        "createLabel": "Créer un nouveau Confrontation",
+        "createOrEditLabel": "Créer ou éditer un Confrontation",
+        "notFound": "Aucun Confrontation trouvé"
+      },
+      "created": "Un nouveau Confrontation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Confrontation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Confrontation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Confrontation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Confrontation"
+      },
+      "name": "Name",
+      "debut": "Debut",
+      "fin": "Fin",
+      "details": "Details",
+      "matchSheet": "Match Sheet",
+      "localisation": "Localisation",
+      "score": "Score",
+      "team": "Team",
+      "journee": "Journee"
+    }
+  }
+}

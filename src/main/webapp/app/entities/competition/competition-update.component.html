@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-competition-heading" jhiTranslate="kidoleApp.competition.home.createOrEditLabel">Create or edit a Competition</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.debut" for="field_debut">Debut</label>
+                    <div class="d-flex">
+                        <input id="field_debut" type="datetime-local" class="form-control" name="debut" formControlName="debut" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.fin" for="field_fin">Fin</label>
+                    <div class="d-flex">
+                        <input id="field_fin" type="datetime-local" class="form-control" name="fin" formControlName="fin" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.dateLimit" for="field_dateLimit">Date Limit</label>
+                    <div class="d-flex">
+                        <input id="field_dateLimit" type="datetime-local" class="form-control" name="dateLimit" formControlName="dateLimit" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.detail" for="field_detail">Detail</label>
+                    <textarea class="form-control" name="detail" id="field_detail"
+                              formControlName="detail"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.role" for="field_role">Role</label>
+                    <div>
+                        <div *ngIf="editForm.get('role')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('roleContentType')!.value, editForm.get('role')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('roleContentType')!.value}}, {{byteSize(editForm.get('role')!.value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({role: null});editForm.patchValue({roleContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_role" (change)="setFileData($event, 'role', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="role" id="field_role"
+                           formControlName="role"/>
+                    <input type="hidden" class="form-control" name="roleContentType" id="field_roleContentType"
+                           formControlName="roleContentType" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

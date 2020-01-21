@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="category">
+            <h2><span jhiTranslate="kidoleApp.category.detail.title">Category</span> {{category.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.category.name">Name</span></dt>
+                <dd>
+                    <span>{{category.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.category.yearlimit">Yearlimit</span></dt>
+                <dd>
+                    <span>{{category.yearlimit}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.category.teamLimitNumb">Team Limit Numb</span></dt>
+                <dd>
+                    <span>{{category.teamLimitNumb}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.category.participantLimitByteam">Participant Limit Byteam</span></dt>
+                <dd>
+                    <span>{{category.participantLimitByteam}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.category.regles">Regles</span></dt>
+                <dd>
+                    <span>{{category.regles}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.category.discipline">Discipline</span></dt>
+                <dd>
+                    <div *ngIf="category.disciplineId">
+                        <a [routerLink]="['/discipline', category.disciplineId, 'view']">{{category.disciplineId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/category', category.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "kidoleApp": {
+    "phase": {
+      "home": {
+        "title": "Phases",
+        "createLabel": "Create a new Phase",
+        "createOrEditLabel": "Create or edit a Phase",
+        "notFound": "No Phases found"
+      },
+      "created": "A new Phase is created with identifier {{ param }}",
+      "updated": "A Phase is updated with identifier {{ param }}",
+      "deleted": "A Phase is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Phase {{ id }}?"
+      },
+      "detail": {
+        "title": "Phase"
+      },
+      "name": "Name",
+      "numero": "Numero",
+      "dayNumber": "Day Number",
+      "journee": "Journee",
+      "format": "Format",
+      "discipline": "Discipline",
+      "help": {
+        "name": "name",
+        "numero": "number",
+        "dayNumber": "daynumber"
+      }
+    }
+  }
+}

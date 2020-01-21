@@ -1,0 +1,116 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.profile.home.title">Profiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profile" [routerLink]="['/profile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kidoleApp.profile.home.createLabel">
+            Create a new Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="profiles?.length === 0">
+        <span jhiTranslate="kidoleApp.profile.home.notFound">No profiles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="profiles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.gender">Gender</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.photo">Photo</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.isAccreditated">Is Accreditated</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.accreditationtype">Accreditationtype</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.dateOfBirth">Date Of Birth</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.placeOfBbirth">Place Of Bbirth</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.clubOrigin">Club Origin</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.nationality">Nationality</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.height">Height</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.weight">Weight</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.manuality">Manuality</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.nic">Nic</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.phone">Phone</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.discipline">Discipline</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.categorie">Categorie</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.teamName">Team Name</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.fonction">Fonction</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.titre">Titre</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.residentCity">Resident City</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.pressID">Press ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.pressAgence">Press Agence</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.bataillonRattachement">Bataillon Rattachement</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.socialDenomination">Social Denomination</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.locationBuilding">Location Building</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.user">User</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.profile.userAccreditation">User Accreditation</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let profile of profiles ;trackBy: trackId">
+                <td><a [routerLink]="['/profile', profile.id, 'view' ]">{{profile.id}}</a></td>
+                <td jhiTranslate="{{'kidoleApp.Gender.' + profile.gender}}">{{profile.gender}}</td>
+                <td>
+                    <a *ngIf="profile.photo" (click)="openFile(profile.photoContentType, profile.photo)">
+                        <img [src]="'data:' + profile.photoContentType + ';base64,' + profile.photo" style="max-height: 30px;" alt="profile image"/>
+                    </a>
+                    <span *ngIf="profile.photo">{{profile.photoContentType}}, {{byteSize(profile.photo)}}</span>
+                </td>
+                <td>{{profile.isAccreditated}}</td>
+                <td jhiTranslate="{{'kidoleApp.AccreditationList.' + profile.accreditationtype}}">{{profile.accreditationtype}}</td>
+                <td>{{profile.dateOfBirth | date:'medium'}}</td>
+                <td>{{profile.placeOfBbirth}}</td>
+                <td>{{profile.clubOrigin}}</td>
+                <td>{{profile.nationality}}</td>
+                <td>{{profile.height}}</td>
+                <td>{{profile.weight}}</td>
+                <td>{{profile.manuality}}</td>
+                <td>{{profile.nic}}</td>
+                <td>{{profile.phone}}</td>
+                <td>{{profile.discipline}}</td>
+                <td>{{profile.categorie}}</td>
+                <td>{{profile.teamName}}</td>
+                <td>{{profile.fonction}}</td>
+                <td>{{profile.titre}}</td>
+                <td>{{profile.residentCity}}</td>
+                <td>{{profile.pressID}}</td>
+                <td>{{profile.pressAgence}}</td>
+                <td>{{profile.bataillonRattachement}}</td>
+                <td>{{profile.socialDenomination}}</td>
+                <td>{{profile.locationBuilding}}</td>
+                <td>
+                    {{profile.userId}}
+                </td>
+                <td>
+                    <div *ngIf="profile.userAccreditationId">
+                        <a [routerLink]="['/accreditation', profile.userAccreditationId , 'view' ]" >{{profile.userAccreditationId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(profile)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
