@@ -1,0 +1,315 @@
+/**
+ * The Profil entity.
+ * @author joel jorle
+ */
+entity Profile {
+    /** Gender */
+    gender Gender required
+    /** photo */
+    photo  ImageBlob
+    /** isAccreditated */
+    isAccreditated Boolean
+     /** type */
+    accreditationtype AccreditationList
+    /** date_of_birth */
+    dateOfBirth Instant
+    /** place_of_birth */
+    placeOfBbirth String
+    /** club_origin */
+    clubOrigin String
+    /** nationality */
+    nationality String
+    /** height */
+    height Integer
+    /** weight */
+    weight  Integer
+    /** manuality */
+    manuality String
+    /** nic */
+    nic String
+    /** phone */
+    phone String
+    /** discipline */
+    discipline String
+    /** categorie */
+    categorie String
+    /** teamName */
+    teamName String
+    /** function */
+    fonction String
+    /** title */
+    titre String
+    /** residentCity */
+    residentCity String
+    /** pressID */
+    pressID String
+    /** pressAgence */
+    pressAgence String
+    /** bataillon_rattachement */
+    bataillonRattachement String
+    /** social_denomination */
+    socialDenomination String
+    /** location */
+    locationBuilding String
+}
+
+entity Competition{
+    name String
+    debut Instant
+    fin Instant
+    dateLimit Instant
+    detail TextBlob
+    role AnyBlob
+}
+
+entity Journee{
+  
+    name String
+}
+
+
+entity Team{
+  
+    name String
+}
+
+entity Confrontation{
+  
+    name String
+    debut Instant
+    fin Instant
+    details TextBlob   
+}
+
+
+entity Score{
+    name String 
+    scoreIndex Integer
+    value Double
+    unite String
+} 
+
+
+entity Poules{
+    name String   
+} 
+
+
+entity MatchSheet{
+    name String
+    resume String
+    isfirst Boolean
+}
+
+entity Discipline{
+    name String
+    sexGender GenderSex
+}
+entity Options{
+    name String
+    value1 Boolean
+    value2 Integer
+}
+
+entity Delegation{
+    name String
+    country String
+    locality String
+    code1 String
+}
+
+entity DelegationMembers{
+    state String
+    code1 String
+    detail String
+}
+
+
+/**
+ * The Category entity.
+ * @author joel jorle
+ */
+entity Category {
+    name String
+    yearlimit Integer
+    teamLimitNumb Integer
+    participantLimitByteam Integer
+    regles TextBlob
+}
+
+/**
+ * The Phase entity.
+ * @author joel jorle
+ */
+entity Phase {
+    /** name */
+    name String
+    /** number */
+    numero  Integer
+    /** daynumber */
+    dayNumber  Integer
+}
+
+entity Localisation{
+    name String
+    latitude Double
+    longitude Double
+    country String
+    town String
+    region String
+    locality String
+    isSite Boolean
+}
+
+entity Format{
+    name String
+    winerQty Integer
+}
+
+entity Notification{
+    title String
+    subject String
+    url String
+    image Blob
+    status NotificationState
+    typeNotif NotificationType
+}
+
+// Prestataire authorities
+
+entity PrestationService {
+name String
+detail TextBlob
+image Blob
+}
+
+entity Rubrique {
+name String
+details TextBlob
+image Blob
+}
+
+entity Files{
+name String
+type String
+publique String
+content Blob
+}
+
+entity Competitionservicejoined{
+state ServicesState
+details String
+}
+
+entity CompetitionServicesOffer{
+name String
+details String
+url String
+}
+
+entity Accreditation{
+name AccreditationList
+status AccreditationState
+details String
+}
+
+entity AccreditationStep{
+   debut Instant
+   fin Instant
+   numero Integer
+   type AccreditationList
+}
+
+enum AccreditationState
+{
+ACTIVE,WAITTING,REJECT
+}
+
+enum AccreditationList{
+    ATHLETE,
+    SPARING,
+    TRAINNER,
+    TEAM_OFFICIAL,
+    ARBITRE,
+    COMMITY_MEMBER_LOCAL,
+    DIGNITAIRE,
+    SPECIAL_INVITEE,
+    COMMITY_MEMBER_NATIONAL,
+    VOLONTEER,
+    PRESS_AGENT,
+    SECURITY_AGENT,
+    SPONSOR,
+    PARTNER
+}
+
+enum NotificationType{
+    SMS,
+    EMAIL,
+    PUSH,
+    ALERT
+}
+
+enum ServicesState {
+ACCEPT,VIEW,WAITTING
+}
+
+enum Gender{
+    MALE, FEMALE
+}
+
+enum GenderSex{
+    MALE, FEMALE,MIX
+}
+
+enum NotificationState {
+    READ,
+    UNREAD
+}
+
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Profile{user} to User
+    Format to Phase
+    Score to Team
+    Confrontation to MatchSheet
+    Confrontation to Localisation
+    Delegation to DelegationMembers
+    Profile{userAccreditation} to Accreditation
+    PrestationService to Rubrique
+    CompetitionServicesOffer to Rubrique
+    Competitionservicejoined to PrestationService
+}
+
+
+/**
+ * One to many relationship.
+ */
+relationship OneToMany {
+    Competition to Localisation
+    Competition{AccreditateUser} to Accreditation // Une competiton a plusieurs Accredite
+    Competition to CompetitionServicesOffer // Une competition a plusieurs offres de services
+    Competition to AccreditationStep   // Une competition a plusieurs etapes d'accreditation
+    CompetitionServicesOffer to Files // Une offres de services a plusieurs fichiers
+    Competition to Competitionservicejoined // une competion a plusieurs services associe
+    Competition to Discipline 
+    Discipline to Phase
+    Competition to Options  
+    Discipline to Category
+    Confrontation to Score
+    Confrontation to Team
+    Journee to Confrontation
+    Phase to Journee
+    Poules to Team
+    Competition to Format
+    DelegationMembers to User
+    Delegation to Team
+    Team to User
+    PrestationService to Files
+    Rubrique to Files
+    Competition to Files
+    PrestationService to Localisation
+}
+
+dto * with mapstruct
