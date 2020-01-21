@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.rubrique.home.title">Rubriques</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rubrique" [routerLink]="['/rubrique/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kidoleApp.rubrique.home.createLabel">
+            Create a new Rubrique
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="rubriques?.length === 0">
+        <span jhiTranslate="kidoleApp.rubrique.home.notFound">No rubriques found</span>
+    </div>
+    <div class="table-responsive" *ngIf="rubriques?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.rubrique.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.rubrique.details">Details</span></th>
+            <th scope="col" ><span jhiTranslate="kidoleApp.rubrique.image">Image</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rubrique of rubriques ;trackBy: trackId">
+                <td><a [routerLink]="['/rubrique', rubrique.id, 'view' ]">{{rubrique.id}}</a></td>
+                <td>{{rubrique.name}}</td>
+                <td>{{rubrique.details}}</td>
+                <td>
+                    <a *ngIf="rubrique.image" (click)="openFile(rubrique.imageContentType, rubrique.image)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="rubrique.image">{{rubrique.imageContentType}}, {{byteSize(rubrique.image)}}</span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/rubrique', rubrique.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rubrique', rubrique.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(rubrique)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

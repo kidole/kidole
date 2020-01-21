@@ -1,0 +1,26 @@
+{
+  "kidoleApp": {
+    "delegationMembers": {
+      "home": {
+        "title": "DelegationMembers",
+        "createLabel": "Créer un nouveau Delegation Members",
+        "createOrEditLabel": "Créer ou éditer un Delegation Members",
+        "notFound": "Aucun Delegation Members trouvé"
+      },
+      "created": "Un nouveau Delegation Members a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Delegation Members avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Delegation Members avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Delegation Members {{ id }} ?"
+      },
+      "detail": {
+        "title": "Delegation Members"
+      },
+      "state": "State",
+      "code1": "Code 1",
+      "detail": "Detail",
+      "user": "User",
+      "delegation": "Delegation"
+    }
+  }
+}

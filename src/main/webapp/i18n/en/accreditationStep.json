@@ -1,0 +1,26 @@
+{
+  "kidoleApp": {
+    "accreditationStep": {
+      "home": {
+        "title": "Accreditation Steps",
+        "createLabel": "Create a new Accreditation Step",
+        "createOrEditLabel": "Create or edit a Accreditation Step",
+        "notFound": "No Accreditation Steps found"
+      },
+      "created": "A new Accreditation Step is created with identifier {{ param }}",
+      "updated": "A Accreditation Step is updated with identifier {{ param }}",
+      "deleted": "A Accreditation Step is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Accreditation Step {{ id }}?"
+      },
+      "detail": {
+        "title": "Accreditation Step"
+      },
+      "debut": "Debut",
+      "fin": "Fin",
+      "numero": "Numero",
+      "type": "Type",
+      "competition": "Competition"
+    }
+  }
+}

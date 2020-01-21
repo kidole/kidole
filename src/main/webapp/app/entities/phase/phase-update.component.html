@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-phase-heading" jhiTranslate="kidoleApp.phase.home.createOrEditLabel">Create or edit a Phase</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.phase.name" for="field_name" [ngbTooltip]="'kidoleApp.phase.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.phase.numero" for="field_numero" [ngbTooltip]="'kidoleApp.phase.help.numero' | translate">Numero</label>
+                    <input type="number" class="form-control" name="numero" id="field_numero"
+                           formControlName="numero"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.phase.dayNumber" for="field_dayNumber" [ngbTooltip]="'kidoleApp.phase.help.dayNumber' | translate">Day Number</label>
+                    <input type="number" class="form-control" name="dayNumber" id="field_dayNumber"
+                           formControlName="dayNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.phase.discipline" for="field_discipline">Discipline</label>
+                    <select class="form-control" id="field_discipline" name="discipline" formControlName="disciplineId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="disciplineOption.id" *ngFor="let disciplineOption of disciplines; trackBy: trackById">{{disciplineOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+{
+    "name": "Competitionservicejoined",
+    "fields": [
+        {
+            "fieldName": "state",
+            "fieldType": "ServicesState",
+            "fieldValues": "ACCEPT,VIEW,WAITTING"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "prestationService",
+            "otherEntityRelationshipName": "competitionservicejoined",
+            "relationshipName": "prestationService",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "competitionservicejoined",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173519",
+    "entityTableName": "competitionservicejoined",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

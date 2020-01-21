@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-accreditation-heading" jhiTranslate="kidoleApp.accreditation.home.createOrEditLabel">Create or edit a Accreditation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.accreditation.name" for="field_name">Name</label>
+                    <select class="form-control" name="name" formControlName="name" id="field_name">
+                        <option value="ATHLETE">{{'kidoleApp.AccreditationList.ATHLETE' | translate}}</option>
+                        <option value="SPARING">{{'kidoleApp.AccreditationList.SPARING' | translate}}</option>
+                        <option value="TRAINNER">{{'kidoleApp.AccreditationList.TRAINNER' | translate}}</option>
+                        <option value="TEAM_OFFICIAL">{{'kidoleApp.AccreditationList.TEAM_OFFICIAL' | translate}}</option>
+                        <option value="ARBITRE">{{'kidoleApp.AccreditationList.ARBITRE' | translate}}</option>
+                        <option value="COMMITY_MEMBER_LOCAL">{{'kidoleApp.AccreditationList.COMMITY_MEMBER_LOCAL' | translate}}</option>
+                        <option value="DIGNITAIRE">{{'kidoleApp.AccreditationList.DIGNITAIRE' | translate}}</option>
+                        <option value="SPECIAL_INVITEE">{{'kidoleApp.AccreditationList.SPECIAL_INVITEE' | translate}}</option>
+                        <option value="COMMITY_MEMBER_NATIONAL">{{'kidoleApp.AccreditationList.COMMITY_MEMBER_NATIONAL' | translate}}</option>
+                        <option value="VOLONTEER">{{'kidoleApp.AccreditationList.VOLONTEER' | translate}}</option>
+                        <option value="PRESS_AGENT">{{'kidoleApp.AccreditationList.PRESS_AGENT' | translate}}</option>
+                        <option value="SECURITY_AGENT">{{'kidoleApp.AccreditationList.SECURITY_AGENT' | translate}}</option>
+                        <option value="SPONSOR">{{'kidoleApp.AccreditationList.SPONSOR' | translate}}</option>
+                        <option value="PARTNER">{{'kidoleApp.AccreditationList.PARTNER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.accreditation.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="ACTIVE">{{'kidoleApp.AccreditationState.ACTIVE' | translate}}</option>
+                        <option value="WAITTING">{{'kidoleApp.AccreditationState.WAITTING' | translate}}</option>
+                        <option value="REJECT">{{'kidoleApp.AccreditationState.REJECT' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.accreditation.details" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                           formControlName="details"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.accreditation.competition" for="field_competition">Competition</label>
+                    <select class="form-control" id="field_competition" name="competition" formControlName="competitionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="competitionOption.id" *ngFor="let competitionOption of competitions; trackBy: trackById">{{competitionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

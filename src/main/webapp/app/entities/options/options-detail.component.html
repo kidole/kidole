@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="options">
+            <h2><span jhiTranslate="kidoleApp.options.detail.title">Options</span> {{options.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.options.name">Name</span></dt>
+                <dd>
+                    <span>{{options.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.options.value1">Value 1</span></dt>
+                <dd>
+                    <span>{{options.value1}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.options.value2">Value 2</span></dt>
+                <dd>
+                    <span>{{options.value2}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.options.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="options.competitionId">
+                        <a [routerLink]="['/competition', options.competitionId, 'view']">{{options.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/options', options.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

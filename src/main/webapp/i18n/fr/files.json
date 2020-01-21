@@ -1,0 +1,29 @@
+{
+  "kidoleApp": {
+    "files": {
+      "home": {
+        "title": "Files",
+        "createLabel": "Créer un nouveau Files",
+        "createOrEditLabel": "Créer ou éditer un Files",
+        "notFound": "Aucun Files trouvé"
+      },
+      "created": "Un nouveau Files a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Files avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Files avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Files {{ id }} ?"
+      },
+      "detail": {
+        "title": "Files"
+      },
+      "name": "Name",
+      "type": "Type",
+      "publique": "Publique",
+      "content": "Content",
+      "competitionServicesOffer": "Competition Services Offer",
+      "prestationService": "Prestation Service",
+      "rubrique": "Rubrique",
+      "competition": "Competition"
+    }
+  }
+}

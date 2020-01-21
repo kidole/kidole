@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competitionservicejoined">
+            <h2><span jhiTranslate="kidoleApp.competitionservicejoined.detail.title">Competitionservicejoined</span> {{competitionservicejoined.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.competitionservicejoined.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.ServicesState.' + competitionservicejoined.state}}">{{competitionservicejoined.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionservicejoined.details">Details</span></dt>
+                <dd>
+                    <span>{{competitionservicejoined.details}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionservicejoined.prestationService">Prestation Service</span></dt>
+                <dd>
+                    <div *ngIf="competitionservicejoined.prestationServiceId">
+                        <a [routerLink]="['/prestation-service', competitionservicejoined.prestationServiceId, 'view']">{{competitionservicejoined.prestationServiceId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionservicejoined.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="competitionservicejoined.competitionId">
+                        <a [routerLink]="['/competition', competitionservicejoined.competitionId, 'view']">{{competitionservicejoined.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competitionservicejoined', competitionservicejoined.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

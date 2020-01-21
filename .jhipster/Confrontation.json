@@ -1,0 +1,69 @@
+{
+    "name": "Confrontation",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "debut",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fin",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "matchSheet",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "matchSheet",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "localisation",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "score",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "score"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "team",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "team"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "journee",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "journee",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173503",
+    "entityTableName": "confrontation",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

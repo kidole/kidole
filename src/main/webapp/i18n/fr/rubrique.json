@@ -1,0 +1,27 @@
+{
+  "kidoleApp": {
+    "rubrique": {
+      "home": {
+        "title": "Rubriques",
+        "createLabel": "Créer un nouveau Rubrique",
+        "createOrEditLabel": "Créer ou éditer un Rubrique",
+        "notFound": "Aucun Rubrique trouvé"
+      },
+      "created": "Un nouveau Rubrique a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rubrique avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rubrique avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Rubrique {{ id }} ?"
+      },
+      "detail": {
+        "title": "Rubrique"
+      },
+      "name": "Name",
+      "details": "Details",
+      "image": "Image",
+      "files": "Files",
+      "prestationService": "Prestation Service",
+      "competitionServicesOffer": "Competition Services Offer"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kidoleApp": {
+    "competitionservicejoined": {
+      "home": {
+        "title": "Competitionservicejoineds",
+        "createLabel": "Créer un nouveau Competitionservicejoined",
+        "createOrEditLabel": "Créer ou éditer un Competitionservicejoined",
+        "notFound": "Aucun Competitionservicejoined trouvé"
+      },
+      "created": "Un nouveau Competitionservicejoined a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Competitionservicejoined avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Competitionservicejoined avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Competitionservicejoined {{ id }} ?"
+      },
+      "detail": {
+        "title": "Competitionservicejoined"
+      },
+      "state": "State",
+      "details": "Details",
+      "prestationService": "Prestation Service",
+      "competition": "Competition"
+    }
+  }
+}

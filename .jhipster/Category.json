@@ -1,0 +1,46 @@
+{
+    "name": "Category",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "yearlimit",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "teamLimitNumb",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "participantLimitByteam",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "regles",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "discipline",
+            "otherEntityRelationshipName": "category",
+            "relationshipName": "discipline",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173511",
+    "javadoc": "The Category entity.\\n@author joel jorle",
+    "entityTableName": "category",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="phase">
+            <h2><span jhiTranslate="kidoleApp.phase.detail.title">Phase</span> {{phase.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.phase.name" [ngbTooltip]="'kidoleApp.phase.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{phase.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.phase.numero" [ngbTooltip]="'kidoleApp.phase.help.numero' | translate">Numero</span></dt>
+                <dd>
+                    <span>{{phase.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.phase.dayNumber" [ngbTooltip]="'kidoleApp.phase.help.dayNumber' | translate">Day Number</span></dt>
+                <dd>
+                    <span>{{phase.dayNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.phase.discipline">Discipline</span></dt>
+                <dd>
+                    <div *ngIf="phase.disciplineId">
+                        <a [routerLink]="['/discipline', phase.disciplineId, 'view']">{{phase.disciplineId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/phase', phase.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

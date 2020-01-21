@@ -1,0 +1,9 @@
+{
+  "kidoleApp": {
+    "Gender": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

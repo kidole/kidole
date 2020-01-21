@@ -1,0 +1,97 @@
+{
+    "name": "Competition",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "debut",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fin",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateLimit",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "role",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "localisation"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "accreditation",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "accreditateUser"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "competitionServicesOffer",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "competitionServicesOffer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "accreditationStep",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "accreditationStep"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "competitionservicejoined",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "competitionservicejoined"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "discipline",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "discipline"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "options",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "options"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "format",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "format"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "files"
+        }
+    ],
+    "changelogDate": "20200121173500",
+    "entityTableName": "competition",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

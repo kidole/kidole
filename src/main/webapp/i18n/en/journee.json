@@ -1,0 +1,24 @@
+{
+  "kidoleApp": {
+    "journee": {
+      "home": {
+        "title": "Journees",
+        "createLabel": "Create a new Journee",
+        "createOrEditLabel": "Create or edit a Journee",
+        "notFound": "No Journees found"
+      },
+      "created": "A new Journee is created with identifier {{ param }}",
+      "updated": "A Journee is updated with identifier {{ param }}",
+      "deleted": "A Journee is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Journee {{ id }}?"
+      },
+      "detail": {
+        "title": "Journee"
+      },
+      "name": "Name",
+      "confrontation": "Confrontation",
+      "phase": "Phase"
+    }
+  }
+}

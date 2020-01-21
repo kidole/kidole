@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competitionServicesOffer">
+            <h2><span jhiTranslate="kidoleApp.competitionServicesOffer.detail.title">Competition Services Offer</span> {{competitionServicesOffer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.competitionServicesOffer.name">Name</span></dt>
+                <dd>
+                    <span>{{competitionServicesOffer.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionServicesOffer.details">Details</span></dt>
+                <dd>
+                    <span>{{competitionServicesOffer.details}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionServicesOffer.url">Url</span></dt>
+                <dd>
+                    <span>{{competitionServicesOffer.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionServicesOffer.rubrique">Rubrique</span></dt>
+                <dd>
+                    <div *ngIf="competitionServicesOffer.rubriqueId">
+                        <a [routerLink]="['/rubrique', competitionServicesOffer.rubriqueId, 'view']">{{competitionServicesOffer.rubriqueId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competitionServicesOffer.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="competitionServicesOffer.competitionId">
+                        <a [routerLink]="['/competition', competitionServicesOffer.competitionId, 'view']">{{competitionServicesOffer.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competition-services-offer', competitionServicesOffer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

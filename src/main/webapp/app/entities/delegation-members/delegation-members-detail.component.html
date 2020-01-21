@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="delegationMembers">
+            <h2><span jhiTranslate="kidoleApp.delegationMembers.detail.title">Delegation Members</span> {{delegationMembers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.state">State</span></dt>
+                <dd>
+                    <span>{{delegationMembers.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.code1">Code 1</span></dt>
+                <dd>
+                    <span>{{delegationMembers.code1}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.detail">Detail</span></dt>
+                <dd>
+                    <span>{{delegationMembers.detail}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/delegation-members', delegationMembers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

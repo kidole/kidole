@@ -1,0 +1,48 @@
+{
+    "name": "Score",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "scoreIndex",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "unite",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "team",
+            "otherEntityRelationshipName": "score",
+            "relationshipName": "team",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "confrontation",
+            "otherEntityRelationshipName": "score",
+            "relationshipName": "confrontation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173504",
+    "entityTableName": "score",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

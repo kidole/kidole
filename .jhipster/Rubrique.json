@@ -1,0 +1,51 @@
+{
+    "name": "Rubrique",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "rubrique",
+            "relationshipName": "files"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "prestationService",
+            "otherEntityRelationshipName": "rubrique",
+            "relationshipName": "prestationService",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "competitionServicesOffer",
+            "otherEntityRelationshipName": "rubrique",
+            "relationshipName": "competitionServicesOffer",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200121173517",
+    "entityTableName": "rubrique",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

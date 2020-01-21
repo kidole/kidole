@@ -1,0 +1,43 @@
+{
+    "name": "Notification",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "subject",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "NotificationState",
+            "fieldValues": "READ,UNREAD"
+        },
+        {
+            "fieldName": "typeNotif",
+            "fieldType": "NotificationType",
+            "fieldValues": "SMS,EMAIL,PUSH,ALERT"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200121173515",
+    "entityTableName": "notification",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

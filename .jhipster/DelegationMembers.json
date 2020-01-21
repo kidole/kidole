@@ -1,0 +1,42 @@
+{
+    "name": "DelegationMembers",
+    "fields": [
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "delegationMembers",
+            "relationshipName": "user"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "delegation",
+            "otherEntityRelationshipName": "delegationMembers",
+            "relationshipName": "delegation",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200121173510",
+    "entityTableName": "delegation_members",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

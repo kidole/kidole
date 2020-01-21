@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="accreditation">
+            <h2><span jhiTranslate="kidoleApp.accreditation.detail.title">Accreditation</span> {{accreditation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.accreditation.name">Name</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.AccreditationList.' + accreditation.name}}">{{accreditation.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditation.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.AccreditationState.' + accreditation.status}}">{{accreditation.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditation.details">Details</span></dt>
+                <dd>
+                    <span>{{accreditation.details}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditation.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="accreditation.competitionId">
+                        <a [routerLink]="['/competition', accreditation.competitionId, 'view']">{{accreditation.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/accreditation', accreditation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

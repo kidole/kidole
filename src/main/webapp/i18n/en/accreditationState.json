@@ -1,0 +1,10 @@
+{
+  "kidoleApp": {
+    "AccreditationState": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "WAITTING": "WAITTING",
+      "REJECT": "REJECT"
+    }
+  }
+}

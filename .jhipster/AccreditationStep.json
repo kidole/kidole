@@ -1,0 +1,41 @@
+{
+    "name": "AccreditationStep",
+    "fields": [
+        {
+            "fieldName": "debut",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fin",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "AccreditationList",
+            "fieldValues": "ATHLETE,SPARING,TRAINNER,TEAM_OFFICIAL,ARBITRE,COMMITY_MEMBER_LOCAL,DIGNITAIRE,SPECIAL_INVITEE,COMMITY_MEMBER_NATIONAL,VOLONTEER,PRESS_AGENT,SECURITY_AGENT,SPONSOR,PARTNER"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "accreditationStep",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173522",
+    "entityTableName": "accreditation_step",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

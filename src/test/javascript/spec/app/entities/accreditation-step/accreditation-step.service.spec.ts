@@ -1,0 +1,145 @@
+import { TestBed, getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { take, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { AccreditationStepService } from 'app/entities/accreditation-step/accreditation-step.service';
+import { IAccreditationStep, AccreditationStep } from 'app/shared/model/accreditation-step.model';
+import { AccreditationList } from 'app/shared/model/enumerations/accreditation-list.model';
+
+describe('Service Tests', () => {
+  describe('AccreditationStep Service', () => {
+    let injector: TestBed;
+    let service: AccreditationStepService;
+    let httpMock: HttpTestingController;
+    let elemDefault: IAccreditationStep;
+    let expectedResult: IAccreditationStep | IAccreditationStep[] | boolean | null;
+    let currentDate: moment.Moment;
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule]
+      });
+      expectedResult = null;
+      injector = getTestBed();
+      service = injector.get(AccreditationStepService);
+      httpMock = injector.get(HttpTestingController);
+      currentDate = moment();
+
+      elemDefault = new AccreditationStep(0, currentDate, currentDate, 0, AccreditationList.ATHLETE);
+    });
+
+    describe('Service methods', () => {
+      it('should find an element', () => {
+        const returnedFromService = Object.assign(
+          {
+            debut: currentDate.format(DATE_TIME_FORMAT),
+            fin: currentDate.format(DATE_TIME_FORMAT)
+          },
+          elemDefault
+        );
+        service
+          .find(123)
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp.body));
+
+        const req = httpMock.expectOne({ method: 'GET' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject(elemDefault);
+      });
+
+      it('should create a AccreditationStep', () => {
+        const returnedFromService = Object.assign(
+          {
+            id: 0,
+            debut: currentDate.format(DATE_TIME_FORMAT),
+            fin: currentDate.format(DATE_TIME_FORMAT)
+          },
+          elemDefault
+        );
+        const expected = Object.assign(
+          {
+            debut: currentDate,
+            fin: currentDate
+          },
+          returnedFromService
+        );
+        service
+          .create(new AccreditationStep())
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp.body));
+        const req = httpMock.expectOne({ method: 'POST' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject(expected);
+      });
+
+      it('should update a AccreditationStep', () => {
+        const returnedFromService = Object.assign(
+          {
+            debut: currentDate.format(DATE_TIME_FORMAT),
+            fin: currentDate.format(DATE_TIME_FORMAT),
+            numero: 1,
+            type: 'BBBBBB'
+          },
+          elemDefault
+        );
+
+        const expected = Object.assign(
+          {
+            debut: currentDate,
+            fin: currentDate
+          },
+          returnedFromService
+        );
+        service
+          .update(expected)
+          .pipe(take(1))
+          .subscribe(resp => (expectedResult = resp.body));
+        const req = httpMock.expectOne({ method: 'PUT' });
+        req.flush(returnedFromService);
+        expect(expectedResult).toMatchObject(expected);
+      });
+
+      it('should return a list of AccreditationStep', () => {
+        const returnedFromService = Object.assign(
+          {
+            debut: currentDate.format(DATE_TIME_FORMAT),
+            fin: currentDate.format(DATE_TIME_FORMAT),
+            numero: 1,
+            type: 'BBBBBB'
+          },
+          elemDefault
+        );
+        const expected = Object.assign(
+          {
+            debut: currentDate,
+            fin: currentDate
+          },
+          returnedFromService
+        );
+        service
+          .query()
+          .pipe(
+            take(1),
+            map(resp => resp.body)
+          )
+          .subscribe(body => (expectedResult = body));
+        const req = httpMock.expectOne({ method: 'GET' });
+        req.flush([returnedFromService]);
+        httpMock.verify();
+        expect(expectedResult).toContainEqual(expected);
+      });
+
+      it('should delete a AccreditationStep', () => {
+        service.delete(123).subscribe(resp => (expectedResult = resp.ok));
+
+        const req = httpMock.expectOne({ method: 'DELETE' });
+        req.flush({ status: 200 });
+        expect(expectedResult);
+      });
+    });
+
+    afterEach(() => {
+      httpMock.verify();
+    });
+  });
+});

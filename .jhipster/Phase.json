@@ -1,0 +1,53 @@
+{
+    "name": "Phase",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numero",
+            "javadoc": "number",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dayNumber",
+            "javadoc": "daynumber",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "journee",
+            "otherEntityRelationshipName": "phase",
+            "relationshipName": "journee"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "format",
+            "otherEntityRelationshipName": "phase",
+            "relationshipName": "format",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "discipline",
+            "otherEntityRelationshipName": "phase",
+            "relationshipName": "discipline",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200121173512",
+    "javadoc": "The Phase entity.\\n@author joel jorle",
+    "entityTableName": "phase",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

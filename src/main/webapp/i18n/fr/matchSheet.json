@@ -1,0 +1,25 @@
+{
+  "kidoleApp": {
+    "matchSheet": {
+      "home": {
+        "title": "MatchSheets",
+        "createLabel": "Créer un nouveau Match Sheet",
+        "createOrEditLabel": "Créer ou éditer un Match Sheet",
+        "notFound": "Aucun Match Sheet trouvé"
+      },
+      "created": "Un nouveau Match Sheet a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Match Sheet avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Match Sheet avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Match Sheet {{ id }} ?"
+      },
+      "detail": {
+        "title": "Match Sheet"
+      },
+      "name": "Name",
+      "resume": "Resume",
+      "isfirst": "Isfirst",
+      "confrontation": "Confrontation"
+    }
+  }
+}
