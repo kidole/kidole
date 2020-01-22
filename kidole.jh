@@ -303,9 +303,9 @@ relationship OneToMany {
     Phase to Journee
     Poules to Team
     Competition to Format
-    DelegationMembers to User
+   // DelegationMembers to User
     Delegation to Team
-    Team to User
+   // Team to User
     PrestationService to Files
     Rubrique to Files
     Competition to Files
