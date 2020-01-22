@@ -7,8 +7,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Team.
@@ -26,10 +24,6 @@ public class Team implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(mappedBy = "team")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<User> users = new HashSet<>();
 
     @OneToOne(mappedBy = "team")
     @JsonIgnore
@@ -67,31 +61,6 @@ public class Team implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public Team users(Set<User> users) {
-        this.users = users;
-        return this;
-    }
-
-    public Team addUser(User user) {
-        this.users.add(user);
-        user.setTeam(this);
-        return this;
-    }
-
-    public Team removeUser(User user) {
-        this.users.remove(user);
-        user.setTeam(null);
-        return this;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public Score getScore() {

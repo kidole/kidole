@@ -6,8 +6,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A DelegationMembers.
@@ -31,10 +29,6 @@ public class DelegationMembers implements Serializable {
 
     @Column(name = "detail")
     private String detail;
-
-    @OneToMany(mappedBy = "delegationMembers")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<User> users = new HashSet<>();
 
     @OneToOne(mappedBy = "delegationMembers")
     @JsonIgnore
@@ -86,31 +80,6 @@ public class DelegationMembers implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public DelegationMembers users(Set<User> users) {
-        this.users = users;
-        return this;
-    }
-
-    public DelegationMembers addUser(User user) {
-        this.users.add(user);
-        user.setDelegationMembers(this);
-        return this;
-    }
-
-    public DelegationMembers removeUser(User user) {
-        this.users.remove(user);
-        user.setDelegationMembers(null);
-        return this;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public Delegation getDelegation() {

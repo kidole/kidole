@@ -8,12 +8,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "user",
-            "otherEntityRelationshipName": "team",
-            "relationshipName": "user"
-        },
-        {
             "relationshipType": "one-to-one",
             "otherEntityName": "score",
             "otherEntityRelationshipName": "team",

@@ -12,8 +12,6 @@ import org.mapstruct.*;
 public interface DelegationMembersMapper extends EntityMapper<DelegationMembersDTO, DelegationMembers> {
 
 
-    @Mapping(target = "users", ignore = true)
-    @Mapping(target = "removeUser", ignore = true)
     @Mapping(target = "delegation", ignore = true)
     DelegationMembers toEntity(DelegationMembersDTO delegationMembersDTO);
 

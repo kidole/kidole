@@ -16,8 +16,6 @@ public interface TeamMapper extends EntityMapper<TeamDTO, Team> {
     @Mapping(source = "delegation.id", target = "delegationId")
     TeamDTO toDto(Team team);
 
-    @Mapping(target = "users", ignore = true)
-    @Mapping(target = "removeUser", ignore = true)
     @Mapping(target = "score", ignore = true)
     @Mapping(source = "confrontationId", target = "confrontation")
     @Mapping(source = "poulesId", target = "poules")

@@ -16,12 +16,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "user",
-            "otherEntityRelationshipName": "delegationMembers",
-            "relationshipName": "user"
-        },
-        {
             "relationshipType": "one-to-one",
             "otherEntityName": "delegation",
             "otherEntityRelationshipName": "delegationMembers",
