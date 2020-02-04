@@ -14,6 +14,47 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142517_added_entity_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142518_added_entity_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142519_added_entity_Journee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142520_added_entity_Team.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142521_added_entity_Confrontation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142522_added_entity_Score.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142523_added_entity_Poules.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142524_added_entity_MatchSheet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142525_added_entity_Discipline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142526_added_entity_Options.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142527_added_entity_Delegation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142528_added_entity_DelegationMembers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142529_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142530_added_entity_Phase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142531_added_entity_Localisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142532_added_entity_Format.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142533_added_entity_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142534_added_entity_PrestationService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142535_added_entity_Rubrique.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142536_added_entity_Files.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142537_added_entity_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142538_added_entity_Accreditation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142539_added_entity_AccreditationStep.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200204142517_added_entity_constraints_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142518_added_entity_constraints_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142519_added_entity_constraints_Journee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142520_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142521_added_entity_constraints_Confrontation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142522_added_entity_constraints_Score.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142525_added_entity_constraints_Discipline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142526_added_entity_constraints_Options.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142527_added_entity_constraints_Delegation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142529_added_entity_constraints_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142531_added_entity_constraints_Localisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142532_added_entity_constraints_Format.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142533_added_entity_constraints_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142534_added_entity_constraints_PrestationService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142536_added_entity_constraints_Files.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142537_added_entity_constraints_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142538_added_entity_constraints_Accreditation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200204142539_added_entity_constraints_AccreditationStep.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
