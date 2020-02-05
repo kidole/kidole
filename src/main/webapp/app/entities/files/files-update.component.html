@@ -1,0 +1,132 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-files-heading" jhiTranslate="kidoleApp.files.home.createOrEditLabel">Create or edit a Files</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.fileName" for="field_fileName">File Name</label>
+                    <input type="text" class="form-control" name="fileName" id="field_fileName"
+                           formControlName="fileName"/>
+                    <div *ngIf="editForm.get('fileName')!.invalid && (editForm.get('fileName')!.dirty || editForm.get('fileName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.fileType" for="field_fileType">File Type</label>
+                    <input type="text" class="form-control" name="fileType" id="field_fileType"
+                           formControlName="fileType"/>
+                    <div *ngIf="editForm.get('fileType')!.invalid && (editForm.get('fileType')!.dirty || editForm.get('fileType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileType')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileType')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.filePublic" for="field_filePublic">File Public</label>
+                    <input type="checkbox" class="form-control" name="filePublic" id="field_filePublic"
+                           formControlName="filePublic"/>
+                    <div *ngIf="editForm.get('filePublic')!.invalid && (editForm.get('filePublic')!.dirty || editForm.get('filePublic')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('filePublic')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.fileToUpload" for="field_fileToUpload">File To Upload</label>
+                    <div>
+                        <div *ngIf="editForm.get('fileToUpload')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fileToUploadContentType')!.value, editForm.get('fileToUpload')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('fileToUploadContentType')!.value}}, {{byteSize(editForm.get('fileToUpload')!.value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({fileToUpload: null});editForm.patchValue({fileToUploadContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fileToUpload" (change)="setFileData($event, 'fileToUpload', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fileToUpload" id="field_fileToUpload"
+                           formControlName="fileToUpload"/>
+                    <input type="hidden" class="form-control" name="fileToUploadContentType" id="field_fileToUploadContentType"
+                           formControlName="fileToUploadContentType" />
+                    <div *ngIf="editForm.get('fileToUpload')!.invalid && (editForm.get('fileToUpload')!.dirty || editForm.get('fileToUpload')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fileToUpload')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.competitionServicesOffer" for="field_competitionServicesOffer">Competition Services Offer</label>
+                    <select class="form-control" id="field_competitionServicesOffer" name="competitionServicesOffer" formControlName="competitionServicesOfferId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="competitionServicesOfferOption.id" *ngFor="let competitionServicesOfferOption of competitionservicesoffers; trackBy: trackById">{{competitionServicesOfferOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.prestationService" for="field_prestationService">Prestation Service</label>
+                    <select class="form-control" id="field_prestationService" name="prestationService" formControlName="prestationServiceId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="prestationServiceOption.id" *ngFor="let prestationServiceOption of prestationservices; trackBy: trackById">{{prestationServiceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.rubrique" for="field_rubrique">Rubrique</label>
+                    <select class="form-control" id="field_rubrique" name="rubrique" formControlName="rubriqueId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rubriqueOption.id" *ngFor="let rubriqueOption of rubriques; trackBy: trackById">{{rubriqueOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.files.competition" for="field_competition">Competition</label>
+                    <select class="form-control" id="field_competition" name="competition" formControlName="competitionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="competitionOption.id" *ngFor="let competitionOption of competitions; trackBy: trackById">{{competitionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

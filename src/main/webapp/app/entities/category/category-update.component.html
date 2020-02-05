@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-category-heading" jhiTranslate="kidoleApp.category.home.createOrEditLabel">Create or edit a Category</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.categoryName" for="field_categoryName">Category Name</label>
+                    <input type="text" class="form-control" name="categoryName" id="field_categoryName"
+                           formControlName="categoryName"/>
+                    <div *ngIf="editForm.get('categoryName')!.invalid && (editForm.get('categoryName')!.dirty || editForm.get('categoryName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categoryName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categoryName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categoryName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.yearlimit" for="field_yearlimit">Yearlimit</label>
+                    <input type="number" class="form-control" name="yearlimit" id="field_yearlimit"
+                           formControlName="yearlimit"/>
+                    <div *ngIf="editForm.get('yearlimit')!.invalid && (editForm.get('yearlimit')!.dirty || editForm.get('yearlimit')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('yearlimit')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('yearlimit')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('yearlimit')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.teamLimitNumb" for="field_teamLimitNumb">Team Limit Numb</label>
+                    <input type="number" class="form-control" name="teamLimitNumb" id="field_teamLimitNumb"
+                           formControlName="teamLimitNumb"/>
+                    <div *ngIf="editForm.get('teamLimitNumb')!.invalid && (editForm.get('teamLimitNumb')!.dirty || editForm.get('teamLimitNumb')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('teamLimitNumb')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('teamLimitNumb')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('teamLimitNumb')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.participantLimitByteam" for="field_participantLimitByteam">Participant Limit Byteam</label>
+                    <input type="number" class="form-control" name="participantLimitByteam" id="field_participantLimitByteam"
+                           formControlName="participantLimitByteam"/>
+                    <div *ngIf="editForm.get('participantLimitByteam')!.invalid && (editForm.get('participantLimitByteam')!.dirty || editForm.get('participantLimitByteam')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('participantLimitByteam')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('participantLimitByteam')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('participantLimitByteam')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.categoryRule" for="field_categoryRule">Category Rule</label>
+                    <textarea class="form-control" name="categoryRule" id="field_categoryRule"
+                              formControlName="categoryRule"></textarea>
+                    <div *ngIf="editForm.get('categoryRule')!.invalid && (editForm.get('categoryRule')!.dirty || editForm.get('categoryRule')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categoryRule')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.category.discipline" for="field_discipline">Discipline</label>
+                    <select class="form-control" id="field_discipline" name="discipline" formControlName="disciplineId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="disciplineOption.id" *ngFor="let disciplineOption of disciplines; trackBy: trackById">{{disciplineOption.disciplineName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="accreditationStep">
+            <h2><span jhiTranslate="kidoleApp.accreditationStep.detail.title">Accreditation Step</span> {{accreditationStep.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{accreditationStep.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{accreditationStep.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.accreditationStepnumber">Accreditation Stepnumber</span></dt>
+                <dd>
+                    <span>{{accreditationStep.accreditationStepnumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.accreditationType">Accreditation Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.AccreditationList.' + accreditationStep.accreditationType}}">{{accreditationStep.accreditationType}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.isPublic">Is Public</span></dt>
+                <dd>
+                    <span>{{accreditationStep.isPublic}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.uri">Uri</span></dt>
+                <dd>
+                    <span>{{accreditationStep.uri}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.fields">Fields</span></dt>
+                <dd>
+                    <span>{{accreditationStep.fields}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.accreditationStep.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="accreditationStep.competitionId">
+                        <a [routerLink]="['/competition', accreditationStep.competitionId, 'view']">{{accreditationStep.competitionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/accreditation-step', accreditationStep.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

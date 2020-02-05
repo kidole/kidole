@@ -1,0 +1,28 @@
+{
+  "kidoleApp": {
+    "competitionServicesOffer": {
+      "home": {
+        "title": "CompetitionServicesOffers",
+        "createLabel": "Créer un nouveau Competition Services Offer",
+        "createOrEditLabel": "Créer ou éditer un Competition Services Offer",
+        "search": "Recherche pour Competition Services Offer",
+        "notFound": "Aucun Competition Services Offer trouvé"
+      },
+      "created": "Un nouveau Competition Services Offer a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Competition Services Offer avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Competition Services Offer avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Competition Services Offer {{ id }} ?"
+      },
+      "detail": {
+        "title": "Competition Services Offer"
+      },
+      "competitionServicesOfferName": "Competition Services Offer Name",
+      "competitionServicesOfferDetail": "Competition Services Offer Detail",
+      "competitionServicesOfferUrl": "Competition Services Offer Url",
+      "rubric": "Rubric",
+      "file": "File",
+      "competition": "Competition"
+    }
+  }
+}

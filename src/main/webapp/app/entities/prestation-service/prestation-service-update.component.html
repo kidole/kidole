@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-prestation-service-heading" jhiTranslate="kidoleApp.prestationService.home.createOrEditLabel">Create or edit a Prestation Service</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.prestationServiceName" for="field_prestationServiceName">Prestation Service Name</label>
+                    <input type="text" class="form-control" name="prestationServiceName" id="field_prestationServiceName"
+                           formControlName="prestationServiceName"/>
+                    <div *ngIf="editForm.get('prestationServiceName')!.invalid && (editForm.get('prestationServiceName')!.dirty || editForm.get('prestationServiceName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prestationServiceName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prestationServiceName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prestationServiceName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.prestationServiceNameState" for="field_prestationServiceNameState">Prestation Service Name State</label>
+                    <select class="form-control" name="prestationServiceNameState" formControlName="prestationServiceNameState" id="field_prestationServiceNameState">
+                        <option value="ACCEPT">{{'kidoleApp.ServicesState.ACCEPT' | translate}}</option>
+                        <option value="VIEW">{{'kidoleApp.ServicesState.VIEW' | translate}}</option>
+                        <option value="REJECT">{{'kidoleApp.ServicesState.REJECT' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('prestationServiceNameState')!.invalid && (editForm.get('prestationServiceNameState')!.dirty || editForm.get('prestationServiceNameState')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prestationServiceNameState')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.prestationServiceNameDetail" for="field_prestationServiceNameDetail">Prestation Service Name Detail</label>
+                    <textarea class="form-control" name="prestationServiceNameDetail" id="field_prestationServiceNameDetail"
+                              formControlName="prestationServiceNameDetail"></textarea>
+                    <div *ngIf="editForm.get('prestationServiceNameDetail')!.invalid && (editForm.get('prestationServiceNameDetail')!.dirty || editForm.get('prestationServiceNameDetail')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('prestationServiceNameDetail')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.prestationServiceNameImage" for="field_prestationServiceNameImage">Prestation Service Name Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('prestationServiceNameImageContentType')!.value + ';base64,' + editForm.get('prestationServiceNameImage')!.value" style="max-height: 100px;" *ngIf="editForm.get('prestationServiceNameImage')!.value" alt="prestationService image"/>
+                        <div *ngIf="editForm.get('prestationServiceNameImage')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('prestationServiceNameImageContentType')!.value}}, {{byteSize(editForm.get('prestationServiceNameImage')!.value)}}</span>
+                            <button type="button" (click)="clearInputImage('prestationServiceNameImage', 'prestationServiceNameImageContentType', 'file_prestationServiceNameImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_prestationServiceNameImage" (change)="setFileData($event, 'prestationServiceNameImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="prestationServiceNameImage" id="field_prestationServiceNameImage"
+                           formControlName="prestationServiceNameImage"/>
+                    <input type="hidden" class="form-control" name="prestationServiceNameImageContentType" id="field_prestationServiceNameImageContentType"
+                           formControlName="prestationServiceNameImageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.rubrique" for="field_rubrique">Rubrique</label>
+                    <select class="form-control" id="field_rubrique" name="rubrique" formControlName="rubriqueId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rubriqueOption.id" *ngFor="let rubriqueOption of rubriques; trackBy: trackById">{{rubriqueOption.rubriqueName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.prestationService.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+id;match_sheet_name;match_sheet_resume;isfirst
+1;Practical Kids Infrastructure;../fake-data/blob/hipster.txt;true
+2;Gloves;../fake-data/blob/hipster.txt;true
+3;Lights;../fake-data/blob/hipster.txt;true
+4;firewall Refined Fresh Chips;../fake-data/blob/hipster.txt;false
+5;Upgradable;../fake-data/blob/hipster.txt;true
+6;azure SMTP;../fake-data/blob/hipster.txt;false
+7;scale New Hampshire;../fake-data/blob/hipster.txt;true
+8;Phased;../fake-data/blob/hipster.txt;false
+9;Toys parse invoice;../fake-data/blob/hipster.txt;false
+10;Designer Licensed;../fake-data/blob/hipster.txt;true

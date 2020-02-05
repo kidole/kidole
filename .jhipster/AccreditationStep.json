@@ -1,0 +1,67 @@
+{
+    "name": "AccreditationStep",
+    "fields": [
+        {
+            "fieldName": "startTime",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "accreditationStepnumber",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "accreditationType",
+            "fieldType": "AccreditationList",
+            "fieldValues": "ATHLETE,SPARING,TRAINNER,TEAM_OFFICIAL,ARBITRE,COMMITY_MEMBER_LOCAL,DIGNITAIRE,SPECIAL_INVITEE,COMMITY_MEMBER_NATIONAL,VOLONTEER,PRESS_AGENT,SECURITY_AGENT,SPONSOR,PARTNER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "isPublic",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "uri",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "fields",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "accreditationStep",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164345",
+    "entityTableName": "accreditation_step",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

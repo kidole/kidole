@@ -1,0 +1,30 @@
+{
+  "kidoleApp": {
+    "prestationService": {
+      "home": {
+        "title": "Prestation Services",
+        "createLabel": "Create a new Prestation Service",
+        "createOrEditLabel": "Create or edit a Prestation Service",
+        "search": "Search for Prestation Service",
+        "notFound": "No Prestation Services found"
+      },
+      "created": "A new Prestation Service is created with identifier {{ param }}",
+      "updated": "A Prestation Service is updated with identifier {{ param }}",
+      "deleted": "A Prestation Service is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Prestation Service {{ id }}?"
+      },
+      "detail": {
+        "title": "Prestation Service"
+      },
+      "prestationServiceName": "Prestation Service Name",
+      "prestationServiceNameState": "Prestation Service Name State",
+      "prestationServiceNameDetail": "Prestation Service Name Detail",
+      "prestationServiceNameImage": "Prestation Service Name Image",
+      "rubrique": "Rubrique",
+      "files": "Files",
+      "localisation": "Localisation",
+      "user": "User"
+    }
+  }
+}

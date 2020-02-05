@@ -1,0 +1,174 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-localisation-heading" jhiTranslate="kidoleApp.localisation.home.createOrEditLabel">Create or edit a Localisation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationName" for="field_localisationName">Localisation Name</label>
+                    <input type="text" class="form-control" name="localisationName" id="field_localisationName"
+                           formControlName="localisationName"/>
+                    <div *ngIf="editForm.get('localisationName')!.invalid && (editForm.get('localisationName')!.dirty || editForm.get('localisationName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationLatitude" for="field_localisationLatitude">Localisation Latitude</label>
+                    <input type="number" class="form-control" name="localisationLatitude" id="field_localisationLatitude"
+                           formControlName="localisationLatitude"/>
+                    <div *ngIf="editForm.get('localisationLatitude')!.invalid && (editForm.get('localisationLatitude')!.dirty || editForm.get('localisationLatitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationLatitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('localisationLatitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationLongitude" for="field_localisationLongitude">Localisation Longitude</label>
+                    <input type="number" class="form-control" name="localisationLongitude" id="field_localisationLongitude"
+                           formControlName="localisationLongitude"/>
+                    <div *ngIf="editForm.get('localisationLongitude')!.invalid && (editForm.get('localisationLongitude')!.dirty || editForm.get('localisationLongitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationLongitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('localisationLongitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationCountry" for="field_localisationCountry">Localisation Country</label>
+                    <input type="text" class="form-control" name="localisationCountry" id="field_localisationCountry"
+                           formControlName="localisationCountry"/>
+                    <div *ngIf="editForm.get('localisationCountry')!.invalid && (editForm.get('localisationCountry')!.dirty || editForm.get('localisationCountry')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationCountry')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationCountry')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationCountry')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationTown" for="field_localisationTown">Localisation Town</label>
+                    <input type="text" class="form-control" name="localisationTown" id="field_localisationTown"
+                           formControlName="localisationTown"/>
+                    <div *ngIf="editForm.get('localisationTown')!.invalid && (editForm.get('localisationTown')!.dirty || editForm.get('localisationTown')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationTown')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationTown')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationTown')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationRegion" for="field_localisationRegion">Localisation Region</label>
+                    <input type="text" class="form-control" name="localisationRegion" id="field_localisationRegion"
+                           formControlName="localisationRegion"/>
+                    <div *ngIf="editForm.get('localisationRegion')!.invalid && (editForm.get('localisationRegion')!.dirty || editForm.get('localisationRegion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationRegion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationRegion')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationRegion')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.localisationLocality" for="field_localisationLocality">Localisation Locality</label>
+                    <input type="text" class="form-control" name="localisationLocality" id="field_localisationLocality"
+                           formControlName="localisationLocality"/>
+                    <div *ngIf="editForm.get('localisationLocality')!.invalid && (editForm.get('localisationLocality')!.dirty || editForm.get('localisationLocality')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationLocality')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationLocality')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localisationLocality')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.isSite" for="field_isSite">Is Site</label>
+                    <input type="checkbox" class="form-control" name="isSite" id="field_isSite"
+                           formControlName="isSite"/>
+                    <div *ngIf="editForm.get('isSite')!.invalid && (editForm.get('isSite')!.dirty || editForm.get('isSite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('isSite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.competition" for="field_competition">Competition</label>
+                    <select class="form-control" id="field_competition" name="competition" formControlName="competitionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="competitionOption.id" *ngFor="let competitionOption of competitions; trackBy: trackById">{{competitionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.localisation.prestationService" for="field_prestationService">Prestation Service</label>
+                    <select class="form-control" id="field_prestationService" name="prestationService" formControlName="prestationServiceId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="prestationServiceOption.id" *ngFor="let prestationServiceOption of prestationservices; trackBy: trackById">{{prestationServiceOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

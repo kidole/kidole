@@ -1,0 +1,31 @@
+{
+  "kidoleApp": {
+    "phase": {
+      "home": {
+        "title": "Phases",
+        "createLabel": "Créer un nouveau Phase",
+        "createOrEditLabel": "Créer ou éditer un Phase",
+        "search": "Recherche pour Phase",
+        "notFound": "Aucun Phase trouvé"
+      },
+      "created": "Un nouveau Phase a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Phase avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Phase avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Phase {{ id }} ?"
+      },
+      "detail": {
+        "title": "Phase"
+      },
+      "phaseName": "Phase Name",
+      "phaseNumber": "Phase Number",
+      "phaseDayNumber": "Phase Day Number",
+      "journnee": "Journnee",
+      "help": {
+        "phaseName": "phaseName",
+        "phaseNumber": "phaseNumber",
+        "phaseDayNumber": "phaseDayNumber"
+      }
+    }
+  }
+}

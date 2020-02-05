@@ -1,0 +1,55 @@
+{
+    "name": "Phase",
+    "fields": [
+        {
+            "fieldName": "phaseName",
+            "javadoc": "phaseName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "phaseNumber",
+            "javadoc": "phaseNumber",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
+        },
+        {
+            "fieldName": "phaseDayNumber",
+            "javadoc": "phaseDayNumber",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "journee",
+            "otherEntityRelationshipName": "phase",
+            "relationshipName": "journnee"
+        }
+    ],
+    "changelogDate": "20200205164336",
+    "javadoc": "The Phase entity.\\n@author joel jorle",
+    "entityTableName": "phase",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

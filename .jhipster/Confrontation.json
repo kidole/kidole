@@ -1,0 +1,83 @@
+{
+    "name": "Confrontation",
+    "fields": [
+        {
+            "fieldName": "confrontationName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "confrontationDetails",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "matchSheet",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "matchsheet",
+            "otherEntityField": "matchSheetName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "localisation",
+            "otherEntityField": "localisationName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "score",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "score"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "team",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "team"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "journee",
+            "otherEntityRelationshipName": "confrontation",
+            "relationshipName": "journee",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164327",
+    "entityTableName": "confrontation",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

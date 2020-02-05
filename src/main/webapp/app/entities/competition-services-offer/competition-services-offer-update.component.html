@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-competition-services-offer-heading" jhiTranslate="kidoleApp.competitionServicesOffer.home.createOrEditLabel">Create or edit a Competition Services Offer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competitionServicesOffer.competitionServicesOfferName" for="field_competitionServicesOfferName">Competition Services Offer Name</label>
+                    <input type="text" class="form-control" name="competitionServicesOfferName" id="field_competitionServicesOfferName"
+                           formControlName="competitionServicesOfferName"/>
+                    <div *ngIf="editForm.get('competitionServicesOfferName')!.invalid && (editForm.get('competitionServicesOfferName')!.dirty || editForm.get('competitionServicesOfferName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competitionServicesOffer.competitionServicesOfferDetail" for="field_competitionServicesOfferDetail">Competition Services Offer Detail</label>
+                    <textarea class="form-control" name="competitionServicesOfferDetail" id="field_competitionServicesOfferDetail"
+                              formControlName="competitionServicesOfferDetail"></textarea>
+                    <div *ngIf="editForm.get('competitionServicesOfferDetail')!.invalid && (editForm.get('competitionServicesOfferDetail')!.dirty || editForm.get('competitionServicesOfferDetail')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferDetail')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competitionServicesOffer.competitionServicesOfferUrl" for="field_competitionServicesOfferUrl">Competition Services Offer Url</label>
+                    <input type="text" class="form-control" name="competitionServicesOfferUrl" id="field_competitionServicesOfferUrl"
+                           formControlName="competitionServicesOfferUrl"/>
+                    <div *ngIf="editForm.get('competitionServicesOfferUrl')!.invalid && (editForm.get('competitionServicesOfferUrl')!.dirty || editForm.get('competitionServicesOfferUrl')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferUrl')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferUrl')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionServicesOfferUrl')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competitionServicesOffer.rubric" for="field_rubric">Rubric</label>
+                    <select class="form-control" id="field_rubric" name="rubric" formControlName="rubricId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rubriqueOption.id" *ngFor="let rubriqueOption of rubrics; trackBy: trackById">{{rubriqueOption.rubriqueName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competitionServicesOffer.competition" for="field_competition">Competition</label>
+                    <select class="form-control" id="field_competition" name="competition" formControlName="competitionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="competitionOption.id" *ngFor="let competitionOption of competitions; trackBy: trackById">{{competitionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

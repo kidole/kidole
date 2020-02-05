@@ -1,0 +1,133 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-competition-heading" jhiTranslate="kidoleApp.competition.home.createOrEditLabel">Create or edit a Competition</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.competitionName" for="field_competitionName">Competition Name</label>
+                    <input type="text" class="form-control" name="competitionName" id="field_competitionName"
+                           formControlName="competitionName"/>
+                    <div *ngIf="editForm.get('competitionName')!.invalid && (editForm.get('competitionName')!.dirty || editForm.get('competitionName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitionName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.start" for="field_start">Start</label>
+                    <div class="d-flex">
+                        <input id="field_start" type="datetime-local" class="form-control" name="start" formControlName="start" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('start')!.invalid && (editForm.get('start')!.dirty || editForm.get('start')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('start')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('start')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.end" for="field_end">End</label>
+                    <div class="d-flex">
+                        <input id="field_end" type="datetime-local" class="form-control" name="end" formControlName="end" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('end')!.invalid && (editForm.get('end')!.dirty || editForm.get('end')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('end')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('end')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.dateLimit" for="field_dateLimit">Date Limit</label>
+                    <div class="d-flex">
+                        <input id="field_dateLimit" type="datetime-local" class="form-control" name="dateLimit" formControlName="dateLimit" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dateLimit')!.invalid && (editForm.get('dateLimit')!.dirty || editForm.get('dateLimit')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateLimit')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dateLimit')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.detail" for="field_detail">Detail</label>
+                    <textarea class="form-control" name="detail" id="field_detail"
+                              formControlName="detail"></textarea>
+                    <div *ngIf="editForm.get('detail')!.invalid && (editForm.get('detail')!.dirty || editForm.get('detail')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('detail')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.rule" for="field_rule">Rule</label>
+                    <div>
+                        <div *ngIf="editForm.get('rule')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('ruleContentType')!.value, editForm.get('rule')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('ruleContentType')!.value}}, {{byteSize(editForm.get('rule')!.value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({rule: null});editForm.patchValue({ruleContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_rule" (change)="setFileData($event, 'rule', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="rule" id="field_rule"
+                           formControlName="rule"/>
+                    <input type="hidden" class="form-control" name="ruleContentType" id="field_ruleContentType"
+                           formControlName="ruleContentType" />
+                    <div *ngIf="editForm.get('rule')!.invalid && (editForm.get('rule')!.dirty || editForm.get('rule')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rule')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.competition.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

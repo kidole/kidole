@@ -1,0 +1,57 @@
+{
+    "name": "Team",
+    "fields": [
+        {
+            "fieldName": "teamName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "team",
+            "relationshipName": "user",
+            "otherEntityField": "firstName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "confrontation",
+            "otherEntityRelationshipName": "team",
+            "relationshipName": "confrontation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "poules",
+            "otherEntityRelationshipName": "team",
+            "relationshipName": "poules",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "delegation",
+            "otherEntityRelationshipName": "team",
+            "relationshipName": "delegation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164326",
+    "entityTableName": "team",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

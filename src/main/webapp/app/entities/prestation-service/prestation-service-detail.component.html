@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="prestationService">
+            <h2><span jhiTranslate="kidoleApp.prestationService.detail.title">Prestation Service</span> {{prestationService.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.prestationService.prestationServiceName">Prestation Service Name</span></dt>
+                <dd>
+                    <span>{{prestationService.prestationServiceName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.prestationService.prestationServiceNameState">Prestation Service Name State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.ServicesState.' + prestationService.prestationServiceNameState}}">{{prestationService.prestationServiceNameState}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.prestationService.prestationServiceNameDetail">Prestation Service Name Detail</span></dt>
+                <dd>
+                    <span>{{prestationService.prestationServiceNameDetail}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.prestationService.prestationServiceNameImage">Prestation Service Name Image</span></dt>
+                <dd>
+                    <div *ngIf="prestationService.prestationServiceNameImage">
+                        <a (click)="openFile(prestationService.prestationServiceNameImageContentType!, prestationService.prestationServiceNameImage)">
+                            <img [src]="'data:' + prestationService.prestationServiceNameImageContentType + ';base64,' + prestationService.prestationServiceNameImage" style="max-width: 100%;" alt="prestationService image"/>
+                        </a>
+                        {{prestationService.prestationServiceNameImageContentType}}, {{byteSize(prestationService.prestationServiceNameImage)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.prestationService.rubrique">Rubrique</span></dt>
+                <dd>
+                    <div *ngIf="prestationService.rubriqueId">
+                        <a [routerLink]="['/rubrique', prestationService.rubriqueId, 'view']">{{prestationService.rubriqueRubriqueName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.prestationService.user">User</span></dt>
+                <dd>
+                    {{prestationService.userFirstName}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prestation-service', prestationService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

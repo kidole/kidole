@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity Profile.
+    -->
+    <changeSet id="20200205164323-1" author="jhipster">
+        <createTable tableName="profile">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(255)" remarks="Gender">
+                <constraints nullable="false" />
+            </column>
+            <column name="photo" type="longblob" remarks="photo">
+                <constraints nullable="false" />
+            </column>
+            <column name="photo_content_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_of_birth" type="datetime" remarks="date_of_birth">
+                <constraints nullable="false" />
+            </column>
+            <column name="place_of_bbirth" type="varchar(1024)" remarks="place_of_birth">
+                <constraints nullable="false" />
+            </column>
+            <column name="club_origin" type="varchar(1024)" remarks="club_origin">
+                <constraints nullable="false" />
+            </column>
+            <column name="nationality" type="varchar(1024)" remarks="nationality">
+                <constraints nullable="false" />
+            </column>
+            <column name="height" type="${floatType}" remarks="height">
+                <constraints nullable="false" />
+            </column>
+            <column name="weight" type="${floatType}" remarks="weight">
+                <constraints nullable="false" />
+            </column>
+            <column name="manuality" type="varchar(1024)" remarks="manuality">
+                <constraints nullable="false" />
+            </column>
+            <column name="nic" type="varchar(1024)" remarks="nic">
+                <constraints nullable="false" />
+            </column>
+            <column name="phone" type="varchar(1024)" remarks="phone">
+                <constraints nullable="false" />
+            </column>
+            <column name="discipline" type="varchar(1024)" remarks="discipline">
+                <constraints nullable="false" />
+            </column>
+            <column name="categorie" type="varchar(1024)" remarks="categorie">
+                <constraints nullable="false" />
+            </column>
+            <column name="team_name" type="varchar(1024)" remarks="teamName">
+                <constraints nullable="false" />
+            </column>
+            <column name="function_on" type="varchar(1024)" remarks="function">
+                <constraints nullable="false" />
+            </column>
+            <column name="title_as" type="varchar(1024)" remarks="title">
+                <constraints nullable="false" />
+            </column>
+            <column name="resident_city" type="varchar(1024)" remarks="residentCity">
+                <constraints nullable="false" />
+            </column>
+            <column name="press_id" type="varchar(1024)" remarks="pressID">
+                <constraints nullable="false" />
+            </column>
+            <column name="press_agence" type="varchar(1024)" remarks="pressAgence">
+                <constraints nullable="false" />
+            </column>
+            <column name="bataillon_rattachement" type="varchar(1024)" remarks="bataillon_rattachement">
+                <constraints nullable="false" />
+            </column>
+            <column name="social_denomination" type="varchar(1024)" remarks="social_denomination">
+                <constraints nullable="false" />
+            </column>
+            <column name="location_building" type="varchar(1024)" remarks="location">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_profile_user_id" />
+            </column>
+            <column name="accreditation_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_profile_accreditation_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="profile" columnName="date_of_birth" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20200205164323-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20200205164323-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/profile.csv"
+                  separator=";"
+                  tableName="profile">
+            <column name="id" type="numeric"/>
+            <column name="gender" type="string"/>
+            <column name="photo" type="blob"/>
+            <column name="photo_content_type" type="string"/>
+            <column name="date_of_birth" type="datetime"/>
+            <column name="place_of_bbirth" type="string"/>
+            <column name="club_origin" type="string"/>
+            <column name="nationality" type="string"/>
+            <column name="height" type="numeric"/>
+            <column name="weight" type="numeric"/>
+            <column name="manuality" type="string"/>
+            <column name="nic" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="discipline" type="string"/>
+            <column name="categorie" type="string"/>
+            <column name="team_name" type="string"/>
+            <column name="function_on" type="string"/>
+            <column name="title_as" type="string"/>
+            <column name="resident_city" type="string"/>
+            <column name="press_id" type="string"/>
+            <column name="press_agence" type="string"/>
+            <column name="bataillon_rattachement" type="string"/>
+            <column name="social_denomination" type="string"/>
+            <column name="location_building" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

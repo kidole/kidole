@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="localisation">
+            <h2><span jhiTranslate="kidoleApp.localisation.detail.title">Localisation</span> {{localisation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationName">Localisation Name</span></dt>
+                <dd>
+                    <span>{{localisation.localisationName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationLatitude">Localisation Latitude</span></dt>
+                <dd>
+                    <span>{{localisation.localisationLatitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationLongitude">Localisation Longitude</span></dt>
+                <dd>
+                    <span>{{localisation.localisationLongitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationCountry">Localisation Country</span></dt>
+                <dd>
+                    <span>{{localisation.localisationCountry}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationTown">Localisation Town</span></dt>
+                <dd>
+                    <span>{{localisation.localisationTown}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationRegion">Localisation Region</span></dt>
+                <dd>
+                    <span>{{localisation.localisationRegion}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.localisationLocality">Localisation Locality</span></dt>
+                <dd>
+                    <span>{{localisation.localisationLocality}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.isSite">Is Site</span></dt>
+                <dd>
+                    <span>{{localisation.isSite}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="localisation.competitionId">
+                        <a [routerLink]="['/competition', localisation.competitionId, 'view']">{{localisation.competitionId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.localisation.prestationService">Prestation Service</span></dt>
+                <dd>
+                    <div *ngIf="localisation.prestationServiceId">
+                        <a [routerLink]="['/prestation-service', localisation.prestationServiceId, 'view']">{{localisation.prestationServiceId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/localisation', localisation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

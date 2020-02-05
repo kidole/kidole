@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="matchSheet">
+            <h2><span jhiTranslate="kidoleApp.matchSheet.detail.title">Match Sheet</span> {{matchSheet.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.matchSheet.matchSheetName">Match Sheet Name</span></dt>
+                <dd>
+                    <span>{{matchSheet.matchSheetName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.matchSheet.matchSheetResume">Match Sheet Resume</span></dt>
+                <dd>
+                    <span>{{matchSheet.matchSheetResume}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.matchSheet.isfirst">Isfirst</span></dt>
+                <dd>
+                    <span>{{matchSheet.isfirst}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/match-sheet', matchSheet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kidoleApp.profile.home.title">Profiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profile" [routerLink]="['/profile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="kidoleApp.profile.home.createLabel">
+            Create a new Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'kidoleApp.profile.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="profiles?.length === 0">
+        <span jhiTranslate="kidoleApp.profile.home.notFound">No profiles found</span>
+    </div>
+    <div class="table-responsive" *ngIf="profiles?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="gender"><span jhiTranslate="kidoleApp.profile.gender">Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="photo"><span jhiTranslate="kidoleApp.profile.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateOfBirth"><span jhiTranslate="kidoleApp.profile.dateOfBirth">Date Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="placeOfBbirth"><span jhiTranslate="kidoleApp.profile.placeOfBbirth">Place Of Bbirth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="clubOrigin"><span jhiTranslate="kidoleApp.profile.clubOrigin">Club Origin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nationality"><span jhiTranslate="kidoleApp.profile.nationality">Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="height"><span jhiTranslate="kidoleApp.profile.height">Height</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="weight"><span jhiTranslate="kidoleApp.profile.weight">Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="manuality"><span jhiTranslate="kidoleApp.profile.manuality">Manuality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nic"><span jhiTranslate="kidoleApp.profile.nic">Nic</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="phone"><span jhiTranslate="kidoleApp.profile.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="discipline"><span jhiTranslate="kidoleApp.profile.discipline">Discipline</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="categorie"><span jhiTranslate="kidoleApp.profile.categorie">Categorie</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="teamName"><span jhiTranslate="kidoleApp.profile.teamName">Team Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="functionOn"><span jhiTranslate="kidoleApp.profile.functionOn">Function On</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="titleAs"><span jhiTranslate="kidoleApp.profile.titleAs">Title As</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="residentCity"><span jhiTranslate="kidoleApp.profile.residentCity">Resident City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="pressID"><span jhiTranslate="kidoleApp.profile.pressID">Press ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="pressAgence"><span jhiTranslate="kidoleApp.profile.pressAgence">Press Agence</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bataillonRattachement"><span jhiTranslate="kidoleApp.profile.bataillonRattachement">Bataillon Rattachement</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="socialDenomination"><span jhiTranslate="kidoleApp.profile.socialDenomination">Social Denomination</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="locationBuilding"><span jhiTranslate="kidoleApp.profile.locationBuilding">Location Building</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userFirstName"><span jhiTranslate="kidoleApp.profile.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="accreditationAccreditationName"><span jhiTranslate="kidoleApp.profile.accreditation">Accreditation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let profile of profiles ;trackBy: trackId">
+                <td><a [routerLink]="['/profile', profile.id, 'view' ]">{{profile.id}}</a></td>
+                <td jhiTranslate="{{'kidoleApp.Gender.' + profile.gender}}">{{profile.gender}}</td>
+                <td>
+                    <a *ngIf="profile.photo" (click)="openFile(profile.photoContentType, profile.photo)">
+                        <img [src]="'data:' + profile.photoContentType + ';base64,' + profile.photo" style="max-height: 30px;" alt="profile image"/>
+                    </a>
+                    <span *ngIf="profile.photo">{{profile.photoContentType}}, {{byteSize(profile.photo)}}</span>
+                </td>
+                <td>{{profile.dateOfBirth | date:'medium'}}</td>
+                <td>{{profile.placeOfBbirth}}</td>
+                <td>{{profile.clubOrigin}}</td>
+                <td>{{profile.nationality}}</td>
+                <td>{{profile.height}}</td>
+                <td>{{profile.weight}}</td>
+                <td>{{profile.manuality}}</td>
+                <td>{{profile.nic}}</td>
+                <td>{{profile.phone}}</td>
+                <td>{{profile.discipline}}</td>
+                <td>{{profile.categorie}}</td>
+                <td>{{profile.teamName}}</td>
+                <td>{{profile.functionOn}}</td>
+                <td>{{profile.titleAs}}</td>
+                <td>{{profile.residentCity}}</td>
+                <td>{{profile.pressID}}</td>
+                <td>{{profile.pressAgence}}</td>
+                <td>{{profile.bataillonRattachement}}</td>
+                <td>{{profile.socialDenomination}}</td>
+                <td>{{profile.locationBuilding}}</td>
+                <td>
+                    {{profile.userFirstName}}
+                </td>
+                <td>
+                    <div *ngIf="profile.accreditationId">
+                        <a [routerLink]="['/accreditation', profile.accreditationId , 'view' ]" >{{profile.accreditationAccreditationName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/profile', profile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(profile)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="profiles?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

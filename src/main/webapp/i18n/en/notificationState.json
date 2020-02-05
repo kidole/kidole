@@ -1,0 +1,9 @@
+{
+  "kidoleApp": {
+    "NotificationState": {
+      "null": "",
+      "READ": "READ",
+      "UNREAD": "UNREAD"
+    }
+  }
+}
