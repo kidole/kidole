@@ -1,0 +1,25 @@
+{
+  "kidoleApp": {
+    "journee": {
+      "home": {
+        "title": "Journees",
+        "createLabel": "Créer un nouveau Journee",
+        "createOrEditLabel": "Créer ou éditer un Journee",
+        "search": "Recherche pour Journee",
+        "notFound": "Aucun Journee trouvé"
+      },
+      "created": "Un nouveau Journee a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Journee avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Journee avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Journee {{ id }} ?"
+      },
+      "detail": {
+        "title": "Journee"
+      },
+      "journeeName": "Journee Name",
+      "confrontation": "Confrontation",
+      "phase": "Phase"
+    }
+  }
+}

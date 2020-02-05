@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-delegation-heading" jhiTranslate="kidoleApp.delegation.home.createOrEditLabel">Create or edit a Delegation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.delegation.delegationName" for="field_delegationName">Delegation Name</label>
+                    <input type="text" class="form-control" name="delegationName" id="field_delegationName"
+                           formControlName="delegationName"/>
+                    <div *ngIf="editForm.get('delegationName')!.invalid && (editForm.get('delegationName')!.dirty || editForm.get('delegationName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.delegation.delegationCountry" for="field_delegationCountry">Delegation Country</label>
+                    <input type="text" class="form-control" name="delegationCountry" id="field_delegationCountry"
+                           formControlName="delegationCountry"/>
+                    <div *ngIf="editForm.get('delegationCountry')!.invalid && (editForm.get('delegationCountry')!.dirty || editForm.get('delegationCountry')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCountry')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCountry')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCountry')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.delegation.delegationLocality" for="field_delegationLocality">Delegation Locality</label>
+                    <input type="text" class="form-control" name="delegationLocality" id="field_delegationLocality"
+                           formControlName="delegationLocality"/>
+                    <div *ngIf="editForm.get('delegationLocality')!.invalid && (editForm.get('delegationLocality')!.dirty || editForm.get('delegationLocality')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationLocality')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationLocality')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationLocality')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.delegation.delegationCode" for="field_delegationCode">Delegation Code</label>
+                    <input type="text" class="form-control" name="delegationCode" id="field_delegationCode"
+                           formControlName="delegationCode"/>
+                    <div *ngIf="editForm.get('delegationCode')!.invalid && (editForm.get('delegationCode')!.dirty || editForm.get('delegationCode')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCode')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCode')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('delegationCode')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.delegation.delegateMember" for="field_delegateMember">Delegate Member</label>
+                    <select class="form-control" id="field_delegateMember" name="delegateMember" formControlName="delegateMemberId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="delegationMembersOption.id" *ngFor="let delegationMembersOption of delegatemembers; trackBy: trackById">{{delegationMembersOption.delegationMembersCode}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

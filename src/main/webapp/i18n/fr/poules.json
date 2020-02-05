@@ -1,0 +1,24 @@
+{
+  "kidoleApp": {
+    "poules": {
+      "home": {
+        "title": "Poules",
+        "createLabel": "Créer un nouveau Poules",
+        "createOrEditLabel": "Créer ou éditer un Poules",
+        "search": "Recherche pour Poules",
+        "notFound": "Aucun Poules trouvé"
+      },
+      "created": "Un nouveau Poules a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Poules avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Poules avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Poules {{ id }} ?"
+      },
+      "detail": {
+        "title": "Poules"
+      },
+      "poulesName": "Poules Name",
+      "team": "Team"
+    }
+  }
+}

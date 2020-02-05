@@ -1,0 +1,48 @@
+{
+    "name": "Rubrique",
+    "fields": [
+        {
+            "fieldName": "rubriqueName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "rubriqueDetails",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rubriqueImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "rubrique",
+            "relationshipName": "files"
+        }
+    ],
+    "changelogDate": "20200205164341",
+    "entityTableName": "rubrique",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

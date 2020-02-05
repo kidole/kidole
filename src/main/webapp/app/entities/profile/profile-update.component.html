@@ -1,0 +1,459 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-profile-heading" jhiTranslate="kidoleApp.profile.home.createOrEditLabel">Create or edit a Profile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.gender" for="field_gender" [ngbTooltip]="'kidoleApp.profile.help.gender' | translate">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="MALE">{{'kidoleApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'kidoleApp.Gender.FEMALE' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gender')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.photo" for="field_photo" [ngbTooltip]="'kidoleApp.profile.help.photo' | translate">Photo</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value" style="max-height: 100px;" *ngIf="editForm.get('photo')!.value" alt="profile image"/>
+                        <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('photoContentType')!.value}}, {{byteSize(editForm.get('photo')!.value)}}</span>
+                            <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'file_photo')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_photo" (change)="setFileData($event, 'photo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="photo" id="field_photo"
+                           formControlName="photo"/>
+                    <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                           formControlName="photoContentType" />
+                    <div *ngIf="editForm.get('photo')!.invalid && (editForm.get('photo')!.dirty || editForm.get('photo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('photo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.dateOfBirth" for="field_dateOfBirth" [ngbTooltip]="'kidoleApp.profile.help.dateOfBirth' | translate">Date Of Birth</label>
+                    <div class="d-flex">
+                        <input id="field_dateOfBirth" type="datetime-local" class="form-control" name="dateOfBirth" formControlName="dateOfBirth" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dateOfBirth')!.invalid && (editForm.get('dateOfBirth')!.dirty || editForm.get('dateOfBirth')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateOfBirth')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dateOfBirth')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.placeOfBbirth" for="field_placeOfBbirth" [ngbTooltip]="'kidoleApp.profile.help.placeOfBbirth' | translate">Place Of Bbirth</label>
+                    <input type="text" class="form-control" name="placeOfBbirth" id="field_placeOfBbirth"
+                           formControlName="placeOfBbirth"/>
+                    <div *ngIf="editForm.get('placeOfBbirth')!.invalid && (editForm.get('placeOfBbirth')!.dirty || editForm.get('placeOfBbirth')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('placeOfBbirth')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('placeOfBbirth')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('placeOfBbirth')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.clubOrigin" for="field_clubOrigin" [ngbTooltip]="'kidoleApp.profile.help.clubOrigin' | translate">Club Origin</label>
+                    <input type="text" class="form-control" name="clubOrigin" id="field_clubOrigin"
+                           formControlName="clubOrigin"/>
+                    <div *ngIf="editForm.get('clubOrigin')!.invalid && (editForm.get('clubOrigin')!.dirty || editForm.get('clubOrigin')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('clubOrigin')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('clubOrigin')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('clubOrigin')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.nationality" for="field_nationality" [ngbTooltip]="'kidoleApp.profile.help.nationality' | translate">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" id="field_nationality"
+                           formControlName="nationality"/>
+                    <div *ngIf="editForm.get('nationality')!.invalid && (editForm.get('nationality')!.dirty || editForm.get('nationality')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nationality')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nationality')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nationality')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.height" for="field_height" [ngbTooltip]="'kidoleApp.profile.help.height' | translate">Height</label>
+                    <input type="number" class="form-control" name="height" id="field_height"
+                           formControlName="height"/>
+                    <div *ngIf="editForm.get('height')!.invalid && (editForm.get('height')!.dirty || editForm.get('height')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('height')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('height')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1 }">
+                            This field should be at least 1.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('height')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 4 }">
+                            This field cannot be more than 4.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('height')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.weight" for="field_weight" [ngbTooltip]="'kidoleApp.profile.help.weight' | translate">Weight</label>
+                    <input type="number" class="form-control" name="weight" id="field_weight"
+                           formControlName="weight"/>
+                    <div *ngIf="editForm.get('weight')!.invalid && (editForm.get('weight')!.dirty || editForm.get('weight')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weight')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weight')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 5 }">
+                            This field should be at least 5.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weight')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 500 }">
+                            This field cannot be more than 500.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('weight')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.manuality" for="field_manuality" [ngbTooltip]="'kidoleApp.profile.help.manuality' | translate">Manuality</label>
+                    <input type="text" class="form-control" name="manuality" id="field_manuality"
+                           formControlName="manuality"/>
+                    <div *ngIf="editForm.get('manuality')!.invalid && (editForm.get('manuality')!.dirty || editForm.get('manuality')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('manuality')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('manuality')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('manuality')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.nic" for="field_nic" [ngbTooltip]="'kidoleApp.profile.help.nic' | translate">Nic</label>
+                    <input type="text" class="form-control" name="nic" id="field_nic"
+                           formControlName="nic"/>
+                    <div *ngIf="editForm.get('nic')!.invalid && (editForm.get('nic')!.dirty || editForm.get('nic')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nic')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nic')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nic')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.phone" for="field_phone" [ngbTooltip]="'kidoleApp.profile.help.phone' | translate">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                    <div *ngIf="editForm.get('phone')!.invalid && (editForm.get('phone')!.dirty || editForm.get('phone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 8 }">
+                        This field is required to be at least 8 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.discipline" for="field_discipline" [ngbTooltip]="'kidoleApp.profile.help.discipline' | translate">Discipline</label>
+                    <input type="text" class="form-control" name="discipline" id="field_discipline"
+                           formControlName="discipline"/>
+                    <div *ngIf="editForm.get('discipline')!.invalid && (editForm.get('discipline')!.dirty || editForm.get('discipline')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('discipline')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('discipline')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('discipline')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.categorie" for="field_categorie" [ngbTooltip]="'kidoleApp.profile.help.categorie' | translate">Categorie</label>
+                    <input type="text" class="form-control" name="categorie" id="field_categorie"
+                           formControlName="categorie"/>
+                    <div *ngIf="editForm.get('categorie')!.invalid && (editForm.get('categorie')!.dirty || editForm.get('categorie')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categorie')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categorie')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('categorie')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.teamName" for="field_teamName" [ngbTooltip]="'kidoleApp.profile.help.teamName' | translate">Team Name</label>
+                    <input type="text" class="form-control" name="teamName" id="field_teamName"
+                           formControlName="teamName"/>
+                    <div *ngIf="editForm.get('teamName')!.invalid && (editForm.get('teamName')!.dirty || editForm.get('teamName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('teamName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('teamName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('teamName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.functionOn" for="field_functionOn" [ngbTooltip]="'kidoleApp.profile.help.functionOn' | translate">Function On</label>
+                    <input type="text" class="form-control" name="functionOn" id="field_functionOn"
+                           formControlName="functionOn"/>
+                    <div *ngIf="editForm.get('functionOn')!.invalid && (editForm.get('functionOn')!.dirty || editForm.get('functionOn')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('functionOn')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('functionOn')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('functionOn')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.titleAs" for="field_titleAs" [ngbTooltip]="'kidoleApp.profile.help.titleAs' | translate">Title As</label>
+                    <input type="text" class="form-control" name="titleAs" id="field_titleAs"
+                           formControlName="titleAs"/>
+                    <div *ngIf="editForm.get('titleAs')!.invalid && (editForm.get('titleAs')!.dirty || editForm.get('titleAs')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('titleAs')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('titleAs')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('titleAs')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.residentCity" for="field_residentCity" [ngbTooltip]="'kidoleApp.profile.help.residentCity' | translate">Resident City</label>
+                    <input type="text" class="form-control" name="residentCity" id="field_residentCity"
+                           formControlName="residentCity"/>
+                    <div *ngIf="editForm.get('residentCity')!.invalid && (editForm.get('residentCity')!.dirty || editForm.get('residentCity')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('residentCity')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('residentCity')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('residentCity')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.pressID" for="field_pressID" [ngbTooltip]="'kidoleApp.profile.help.pressID' | translate">Press ID</label>
+                    <input type="text" class="form-control" name="pressID" id="field_pressID"
+                           formControlName="pressID"/>
+                    <div *ngIf="editForm.get('pressID')!.invalid && (editForm.get('pressID')!.dirty || editForm.get('pressID')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressID')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressID')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressID')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.pressAgence" for="field_pressAgence" [ngbTooltip]="'kidoleApp.profile.help.pressAgence' | translate">Press Agence</label>
+                    <input type="text" class="form-control" name="pressAgence" id="field_pressAgence"
+                           formControlName="pressAgence"/>
+                    <div *ngIf="editForm.get('pressAgence')!.invalid && (editForm.get('pressAgence')!.dirty || editForm.get('pressAgence')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressAgence')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressAgence')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pressAgence')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.bataillonRattachement" for="field_bataillonRattachement" [ngbTooltip]="'kidoleApp.profile.help.bataillonRattachement' | translate">Bataillon Rattachement</label>
+                    <input type="text" class="form-control" name="bataillonRattachement" id="field_bataillonRattachement"
+                           formControlName="bataillonRattachement"/>
+                    <div *ngIf="editForm.get('bataillonRattachement')!.invalid && (editForm.get('bataillonRattachement')!.dirty || editForm.get('bataillonRattachement')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bataillonRattachement')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bataillonRattachement')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bataillonRattachement')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.socialDenomination" for="field_socialDenomination" [ngbTooltip]="'kidoleApp.profile.help.socialDenomination' | translate">Social Denomination</label>
+                    <input type="text" class="form-control" name="socialDenomination" id="field_socialDenomination"
+                           formControlName="socialDenomination"/>
+                    <div *ngIf="editForm.get('socialDenomination')!.invalid && (editForm.get('socialDenomination')!.dirty || editForm.get('socialDenomination')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('socialDenomination')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('socialDenomination')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('socialDenomination')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.locationBuilding" for="field_locationBuilding" [ngbTooltip]="'kidoleApp.profile.help.locationBuilding' | translate">Location Building</label>
+                    <input type="text" class="form-control" name="locationBuilding" id="field_locationBuilding"
+                           formControlName="locationBuilding"/>
+                    <div *ngIf="editForm.get('locationBuilding')!.invalid && (editForm.get('locationBuilding')!.dirty || editForm.get('locationBuilding')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('locationBuilding')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('locationBuilding')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('locationBuilding')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.profile.accreditation" for="field_accreditation">Accreditation</label>
+                    <select class="form-control" id="field_accreditation" name="accreditation" formControlName="accreditationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="accreditationOption.id" *ngFor="let accreditationOption of accreditations; trackBy: trackById">{{accreditationOption.accreditationName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

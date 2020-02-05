@@ -1,0 +1,11 @@
+id;prestation_service_name;prestation_service_name_state;prestation_service_name_detail;prestation_service_name_image;prestation_service_name_image_content_type
+1;Cambridgeshire Wyoming New Hampshire;VIEW;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+2;cross-platform Handmade;REJECT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+3;Bedfordshire back-end;VIEW;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+4;action-items port;ACCEPT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+5;circuit;VIEW;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+6;blue Bacon PCI;REJECT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+7;Saint Barthelemy;ACCEPT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+8;invoice transmit;ACCEPT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+9;users Buckinghamshire;VIEW;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+10;Tactics Incredible Plastic Pants;REJECT;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png

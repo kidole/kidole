@@ -1,0 +1,26 @@
+{
+  "kidoleApp": {
+    "options": {
+      "home": {
+        "title": "Options",
+        "createLabel": "Create a new Options",
+        "createOrEditLabel": "Create or edit a Options",
+        "search": "Search for Options",
+        "notFound": "No Options found"
+      },
+      "created": "A new Options is created with identifier {{ param }}",
+      "updated": "A Options is updated with identifier {{ param }}",
+      "deleted": "A Options is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Options {{ id }}?"
+      },
+      "detail": {
+        "title": "Options"
+      },
+      "optionsName": "Options Name",
+      "optionsValue1": "Options Value 1",
+      "optionsValue2": "Options Value 2",
+      "competition": "Competition"
+    }
+  }
+}

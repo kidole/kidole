@@ -1,0 +1,52 @@
+{
+    "name": "Format",
+    "fields": [
+        {
+            "fieldName": "formatName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "winerQty",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "phase",
+            "otherEntityRelationshipName": "format",
+            "relationshipName": "phase",
+            "otherEntityField": "phaseName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "format",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164338",
+    "entityTableName": "format",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

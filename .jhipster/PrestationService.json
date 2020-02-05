@@ -1,0 +1,77 @@
+{
+    "name": "PrestationService",
+    "fields": [
+        {
+            "fieldName": "prestationServiceName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "prestationServiceNameState",
+            "fieldType": "ServicesState",
+            "fieldValues": "ACCEPT,VIEW,REJECT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prestationServiceNameDetail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prestationServiceNameImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "rubrique",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "rubrique",
+            "otherEntityField": "rubriqueName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "files"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "localisation"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "prestationService",
+            "relationshipName": "user",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "changelogDate": "20200205164340",
+    "entityTableName": "prestation_service",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

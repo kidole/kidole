@@ -1,0 +1,24 @@
+{
+  "kidoleApp": {
+    "poules": {
+      "home": {
+        "title": "Poules",
+        "createLabel": "Create a new Poules",
+        "createOrEditLabel": "Create or edit a Poules",
+        "search": "Search for Poules",
+        "notFound": "No Poules found"
+      },
+      "created": "A new Poules is created with identifier {{ param }}",
+      "updated": "A Poules is updated with identifier {{ param }}",
+      "deleted": "A Poules is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Poules {{ id }}?"
+      },
+      "detail": {
+        "title": "Poules"
+      },
+      "poulesName": "Poules Name",
+      "team": "Team"
+    }
+  }
+}

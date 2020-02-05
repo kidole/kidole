@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competition">
+            <h2><span jhiTranslate="kidoleApp.competition.detail.title">Competition</span> {{competition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.competition.competitionName">Competition Name</span></dt>
+                <dd>
+                    <span>{{competition.competitionName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.start">Start</span></dt>
+                <dd>
+                    <span>{{competition.start}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.end">End</span></dt>
+                <dd>
+                    <span>{{competition.end}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.dateLimit">Date Limit</span></dt>
+                <dd>
+                    <span>{{competition.dateLimit}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.detail">Detail</span></dt>
+                <dd>
+                    <span>{{competition.detail}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.rule">Rule</span></dt>
+                <dd>
+                    <div *ngIf="competition.rule">
+                        <a (click)="openFile(competition.ruleContentType!, competition.rule)" jhiTranslate="entity.action.open">open</a>
+                        {{competition.ruleContentType}}, {{byteSize(competition.rule)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.competition.user">User</span></dt>
+                <dd>
+                    {{competition.userFirstName}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competition', competition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

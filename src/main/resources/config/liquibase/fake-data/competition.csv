@@ -1,0 +1,11 @@
+id;competition_name;start;end;date_limit;detail;rule;rule_content_type
+1;transitional Intelligent Lake;2020-02-04T21:20:21;2020-02-05T10:36:16;2020-02-05T10:09:14;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+2;secured line Florida;2020-02-05T16:40:30;2020-02-05T07:32:33;2020-02-05T00:31:01;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+3;Producer invoice;2020-02-05T15:42:55;2020-02-05T07:27:27;2020-02-05T01:47:19;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+4;Democratic People's Republic of Korea card Home;2020-02-05T04:33:36;2020-02-05T00:52:07;2020-02-04T18:48:47;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+5;Ball;2020-02-05T08:42:26;2020-02-04T16:45:13;2020-02-05T14:18:02;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+6;Practical Wooden Chair;2020-02-05T14:13:54;2020-02-04T18:15:34;2020-02-05T14:06:18;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+7;Lights Guarani;2020-02-05T03:58:48;2020-02-05T05:55:51;2020-02-05T00:43:42;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+8;partnerships Ergonomic;2020-02-05T04:06:57;2020-02-05T15:11:17;2020-02-04T19:30:58;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+9;Principal;2020-02-05T14:12:14;2020-02-04T21:13:20;2020-02-05T14:51:02;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png
+10;neural-net;2020-02-05T10:11:48;2020-02-04T20:52:14;2020-02-05T16:13:52;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png

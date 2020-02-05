@@ -1,0 +1,70 @@
+{
+  "kidoleApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "createLabel": "Créer un nouveau Profile",
+        "createOrEditLabel": "Créer ou éditer un Profile",
+        "search": "Recherche pour Profile",
+        "notFound": "Aucun Profile trouvé"
+      },
+      "created": "Un nouveau Profile a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Profile avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Profile avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Profile {{ id }} ?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "gender": "Gender",
+      "photo": "Photo",
+      "dateOfBirth": "Date Of Birth",
+      "placeOfBbirth": "Place Of Bbirth",
+      "clubOrigin": "Club Origin",
+      "nationality": "Nationality",
+      "height": "Height",
+      "weight": "Weight",
+      "manuality": "Manuality",
+      "nic": "Nic",
+      "phone": "Phone",
+      "discipline": "Discipline",
+      "categorie": "Categorie",
+      "teamName": "Team Name",
+      "functionOn": "Function On",
+      "titleAs": "Title As",
+      "residentCity": "Resident City",
+      "pressID": "Press ID",
+      "pressAgence": "Press Agence",
+      "bataillonRattachement": "Bataillon Rattachement",
+      "socialDenomination": "Social Denomination",
+      "locationBuilding": "Location Building",
+      "user": "User",
+      "accreditation": "Accreditation",
+      "help": {
+        "gender": "Gender",
+        "photo": "photo",
+        "dateOfBirth": "date_of_birth",
+        "placeOfBbirth": "place_of_birth",
+        "clubOrigin": "club_origin",
+        "nationality": "nationality",
+        "height": "height",
+        "weight": "weight",
+        "manuality": "manuality",
+        "nic": "nic",
+        "phone": "phone",
+        "discipline": "discipline",
+        "categorie": "categorie",
+        "teamName": "teamName",
+        "functionOn": "function",
+        "titleAs": "title",
+        "residentCity": "residentCity",
+        "pressID": "pressID",
+        "pressAgence": "pressAgence",
+        "bataillonRattachement": "bataillon_rattachement",
+        "socialDenomination": "social_denomination",
+        "locationBuilding": "location"
+      }
+    }
+  }
+}

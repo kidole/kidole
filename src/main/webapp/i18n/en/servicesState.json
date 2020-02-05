@@ -1,0 +1,10 @@
+{
+  "kidoleApp": {
+    "ServicesState": {
+      "null": "",
+      "ACCEPT": "ACCEPT",
+      "VIEW": "VIEW",
+      "REJECT": "REJECT"
+    }
+  }
+}

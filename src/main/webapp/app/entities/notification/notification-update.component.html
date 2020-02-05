@@ -1,0 +1,139 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-notification-heading" jhiTranslate="kidoleApp.notification.home.createOrEditLabel">Create or edit a Notification</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationTitle" for="field_notificationTitle">Notification Title</label>
+                    <input type="text" class="form-control" name="notificationTitle" id="field_notificationTitle"
+                           formControlName="notificationTitle"/>
+                    <div *ngIf="editForm.get('notificationTitle')!.invalid && (editForm.get('notificationTitle')!.dirty || editForm.get('notificationTitle')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationTitle')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationTitle')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationTitle')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationSubject" for="field_notificationSubject">Notification Subject</label>
+                    <input type="text" class="form-control" name="notificationSubject" id="field_notificationSubject"
+                           formControlName="notificationSubject"/>
+                    <div *ngIf="editForm.get('notificationSubject')!.invalid && (editForm.get('notificationSubject')!.dirty || editForm.get('notificationSubject')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationSubject')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationSubject')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationSubject')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationUrl" for="field_notificationUrl">Notification Url</label>
+                    <input type="text" class="form-control" name="notificationUrl" id="field_notificationUrl"
+                           formControlName="notificationUrl"/>
+                    <div *ngIf="editForm.get('notificationUrl')!.invalid && (editForm.get('notificationUrl')!.dirty || editForm.get('notificationUrl')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationUrl')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationUrl')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationUrl')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationImage" for="field_notificationImage">Notification Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('notificationImageContentType')!.value + ';base64,' + editForm.get('notificationImage')!.value" style="max-height: 100px;" *ngIf="editForm.get('notificationImage')!.value" alt="notification image"/>
+                        <div *ngIf="editForm.get('notificationImage')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('notificationImageContentType')!.value}}, {{byteSize(editForm.get('notificationImage')!.value)}}</span>
+                            <button type="button" (click)="clearInputImage('notificationImage', 'notificationImageContentType', 'file_notificationImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_notificationImage" (change)="setFileData($event, 'notificationImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="notificationImage" id="field_notificationImage"
+                           formControlName="notificationImage"/>
+                    <input type="hidden" class="form-control" name="notificationImageContentType" id="field_notificationImageContentType"
+                           formControlName="notificationImageContentType" />
+                    <div *ngIf="editForm.get('notificationImage')!.invalid && (editForm.get('notificationImage')!.dirty || editForm.get('notificationImage')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationImage')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationStatus" for="field_notificationStatus">Notification Status</label>
+                    <select class="form-control" name="notificationStatus" formControlName="notificationStatus" id="field_notificationStatus">
+                        <option value="READ">{{'kidoleApp.NotificationState.READ' | translate}}</option>
+                        <option value="UNREAD">{{'kidoleApp.NotificationState.UNREAD' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('notificationStatus')!.invalid && (editForm.get('notificationStatus')!.dirty || editForm.get('notificationStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationStatus')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.notificationType" for="field_notificationType">Notification Type</label>
+                    <select class="form-control" name="notificationType" formControlName="notificationType" id="field_notificationType">
+                        <option value="SMS">{{'kidoleApp.NotificationType.SMS' | translate}}</option>
+                        <option value="EMAIL">{{'kidoleApp.NotificationType.EMAIL' | translate}}</option>
+                        <option value="PUSH">{{'kidoleApp.NotificationType.PUSH' | translate}}</option>
+                        <option value="ALERT">{{'kidoleApp.NotificationType.ALERT' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('notificationType')!.invalid && (editForm.get('notificationType')!.dirty || editForm.get('notificationType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notificationType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.notification.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

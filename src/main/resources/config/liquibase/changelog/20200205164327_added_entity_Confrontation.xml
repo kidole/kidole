@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity Confrontation.
+    -->
+    <changeSet id="20200205164327-1" author="jhipster">
+        <createTable tableName="confrontation">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="confrontation_name" type="varchar(1024)">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="end_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="confrontation_details" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="matchsheet_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_confrontation_matchsheet_id" />
+            </column>
+            <column name="localisation_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_confrontation_localisation_id" />
+            </column>
+            <column name="journee_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="confrontation" columnName="start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="confrontation" columnName="end_date" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20200205164327-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20200205164327-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/confrontation.csv"
+                  separator=";"
+                  tableName="confrontation">
+            <column name="id" type="numeric"/>
+            <column name="confrontation_name" type="string"/>
+            <column name="start_date" type="datetime"/>
+            <column name="end_date" type="datetime"/>
+            <column name="confrontation_details" type="clob"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-rubrique-heading" jhiTranslate="kidoleApp.rubrique.home.createOrEditLabel">Create or edit a Rubrique</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.rubrique.rubriqueName" for="field_rubriqueName">Rubrique Name</label>
+                    <input type="text" class="form-control" name="rubriqueName" id="field_rubriqueName"
+                           formControlName="rubriqueName"/>
+                    <div *ngIf="editForm.get('rubriqueName')!.invalid && (editForm.get('rubriqueName')!.dirty || editForm.get('rubriqueName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rubriqueName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rubriqueName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rubriqueName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.rubrique.rubriqueDetails" for="field_rubriqueDetails">Rubrique Details</label>
+                    <textarea class="form-control" name="rubriqueDetails" id="field_rubriqueDetails"
+                              formControlName="rubriqueDetails"></textarea>
+                    <div *ngIf="editForm.get('rubriqueDetails')!.invalid && (editForm.get('rubriqueDetails')!.dirty || editForm.get('rubriqueDetails')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rubriqueDetails')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.rubrique.rubriqueImage" for="field_rubriqueImage">Rubrique Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('rubriqueImageContentType')!.value + ';base64,' + editForm.get('rubriqueImage')!.value" style="max-height: 100px;" *ngIf="editForm.get('rubriqueImage')!.value" alt="rubrique image"/>
+                        <div *ngIf="editForm.get('rubriqueImage')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('rubriqueImageContentType')!.value}}, {{byteSize(editForm.get('rubriqueImage')!.value)}}</span>
+                            <button type="button" (click)="clearInputImage('rubriqueImage', 'rubriqueImageContentType', 'file_rubriqueImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_rubriqueImage" (change)="setFileData($event, 'rubriqueImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="rubriqueImage" id="field_rubriqueImage"
+                           formControlName="rubriqueImage"/>
+                    <input type="hidden" class="form-control" name="rubriqueImageContentType" id="field_rubriqueImageContentType"
+                           formControlName="rubriqueImageContentType" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

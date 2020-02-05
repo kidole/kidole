@@ -37,6 +37,29 @@
     <include file="config/liquibase/changelog/20200204142537_added_entity_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200204142538_added_entity_Accreditation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200204142539_added_entity_AccreditationStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164323_added_entity_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164324_added_entity_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164325_added_entity_Journee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164326_added_entity_Team.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164327_added_entity_Confrontation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164328_added_entity_Score.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164329_added_entity_Poules.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164330_added_entity_MatchSheet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164331_added_entity_Discipline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164332_added_entity_Options.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164333_added_entity_Delegation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164334_added_entity_DelegationMembers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164335_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164336_added_entity_Phase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164337_added_entity_Localisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164338_added_entity_Format.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164339_added_entity_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164340_added_entity_PrestationService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164341_added_entity_Rubrique.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164342_added_entity_Files.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164343_added_entity_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164344_added_entity_Accreditation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164345_added_entity_AccreditationStep.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200204142517_added_entity_constraints_Profile.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200204142518_added_entity_constraints_Competition.xml" relativeToChangelogFile="false"/>
@@ -56,5 +79,24 @@
     <include file="config/liquibase/changelog/20200204142537_added_entity_constraints_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200204142538_added_entity_constraints_Accreditation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200204142539_added_entity_constraints_AccreditationStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164323_added_entity_constraints_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164324_added_entity_constraints_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164325_added_entity_constraints_Journee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164326_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164327_added_entity_constraints_Confrontation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164328_added_entity_constraints_Score.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164331_added_entity_constraints_Discipline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164332_added_entity_constraints_Options.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164333_added_entity_constraints_Delegation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164334_added_entity_constraints_DelegationMembers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164335_added_entity_constraints_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164337_added_entity_constraints_Localisation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164338_added_entity_constraints_Format.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164339_added_entity_constraints_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164340_added_entity_constraints_PrestationService.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164342_added_entity_constraints_Files.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164343_added_entity_constraints_CompetitionServicesOffer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164344_added_entity_constraints_Accreditation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205164345_added_entity_constraints_AccreditationStep.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

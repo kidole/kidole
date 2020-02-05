@@ -1,0 +1,11 @@
+id;confrontation_name;start_date;end_date;confrontation_details
+1;functionalities;2020-02-05T03:07:25;2020-02-04T19:50:55;../fake-data/blob/hipster.txt
+2;calculate;2020-02-05T09:33:39;2020-02-05T00:25:53;../fake-data/blob/hipster.txt
+3;contingency turn-key Dam;2020-02-05T05:00:21;2020-02-05T00:42:41;../fake-data/blob/hipster.txt
+4;well-modulated;2020-02-05T12:27:03;2020-02-04T18:57:15;../fake-data/blob/hipster.txt
+5;Producer;2020-02-04T20:50:22;2020-02-04T22:45:35;../fake-data/blob/hipster.txt
+6;Liechtenstein SAS markets;2020-02-05T16:12:14;2020-02-04T18:59:26;../fake-data/blob/hipster.txt
+7;Borders invoice Borders;2020-02-04T22:33:56;2020-02-05T04:41:06;../fake-data/blob/hipster.txt
+8;invoice;2020-02-05T10:58:54;2020-02-05T15:54:39;../fake-data/blob/hipster.txt
+9;interactive FTP;2020-02-05T03:01:53;2020-02-05T16:10:59;../fake-data/blob/hipster.txt
+10;primary;2020-02-04T20:47:12;2020-02-05T16:29:00;../fake-data/blob/hipster.txt

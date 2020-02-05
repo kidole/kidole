@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-score-heading" jhiTranslate="kidoleApp.score.home.createOrEditLabel">Create or edit a Score</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.scoreName" for="field_scoreName">Score Name</label>
+                    <input type="text" class="form-control" name="scoreName" id="field_scoreName"
+                           formControlName="scoreName"/>
+                    <div *ngIf="editForm.get('scoreName')!.invalid && (editForm.get('scoreName')!.dirty || editForm.get('scoreName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreName')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.scoreIndex" for="field_scoreIndex">Score Index</label>
+                    <input type="number" class="form-control" name="scoreIndex" id="field_scoreIndex"
+                           formControlName="scoreIndex"/>
+                    <div *ngIf="editForm.get('scoreIndex')!.invalid && (editForm.get('scoreIndex')!.dirty || editForm.get('scoreIndex')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreIndex')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreIndex')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('scoreIndex')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.scoreValue" for="field_scoreValue">Score Value</label>
+                    <input type="number" class="form-control" name="scoreValue" id="field_scoreValue"
+                           formControlName="scoreValue"/>
+                    <div *ngIf="editForm.get('scoreValue')!.invalid && (editForm.get('scoreValue')!.dirty || editForm.get('scoreValue')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreValue')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('scoreValue')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.scoreUnit" for="field_scoreUnit">Score Unit</label>
+                    <input type="text" class="form-control" name="scoreUnit" id="field_scoreUnit"
+                           formControlName="scoreUnit"/>
+                    <div *ngIf="editForm.get('scoreUnit')!.invalid && (editForm.get('scoreUnit')!.dirty || editForm.get('scoreUnit')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreUnit')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreUnit')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('scoreUnit')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.team" for="field_team">Team</label>
+                    <select class="form-control" id="field_team" name="team" formControlName="teamId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of teams; trackBy: trackById">{{teamOption.teamName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kidoleApp.score.confrontation" for="field_confrontation">Confrontation</label>
+                    <select class="form-control" id="field_confrontation" name="confrontation" formControlName="confrontationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="confrontationOption.id" *ngFor="let confrontationOption of confrontations; trackBy: trackById">{{confrontationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

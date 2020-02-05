@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="delegationMembers">
+            <h2><span jhiTranslate="kidoleApp.delegationMembers.detail.title">Delegation Members</span> {{delegationMembers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.delegationMembersState">Delegation Members State</span></dt>
+                <dd>
+                    <span>{{delegationMembers.delegationMembersState}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.delegationMembersCode">Delegation Members Code</span></dt>
+                <dd>
+                    <span>{{delegationMembers.delegationMembersCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.delegationMembersDetail">Delegation Members Detail</span></dt>
+                <dd>
+                    <span>{{delegationMembers.delegationMembersDetail}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.delegationMembers.user">User</span></dt>
+                <dd>
+                    {{delegationMembers.userFirstName}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/delegation-members', delegationMembers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

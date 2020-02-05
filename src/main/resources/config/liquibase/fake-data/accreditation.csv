@@ -1,0 +1,11 @@
+id;accreditation_name;first_name;last_name;accreditation_email;accreditation_status;accreditation_detail
+1;SPECIAL_INVITEE;Austin;Wilkinson;"1|2Z6@{-MVc.zW";REJECT;../fake-data/blob/hipster.txt
+2;PARTNER;Nyah;Kemmer;"p)G@O.J";ACTIVE;../fake-data/blob/hipster.txt
+3;SECURITY_AGENT;Catherine;Stiedemann;"bY@s.WoUH}\";ACTIVE;../fake-data/blob/hipster.txt
+4;DIGNITAIRE;Jeremy;Wiegand;"E/@7^B./M.Tzz";REJECT;../fake-data/blob/hipster.txt
+5;COMMITY_MEMBER_NATIONAL;Alaina;Cummerata;")_{zD@G/K.hS'g`\";ACTIVE;../fake-data/blob/hipster.txt
+6;SPARING;Kaela;Zemlak;"R?`lly@d?m`}.SV:n";WAITTING;../fake-data/blob/hipster.txt
+7;SPARING;Alfred;Miller;"^.@R#IV.S3uRU";ACTIVE;../fake-data/blob/hipster.txt
+8;COMMITY_MEMBER_LOCAL;Leonor;Blanda;"-@}bNf~.)";WAITTING;../fake-data/blob/hipster.txt
+9;SPECIAL_INVITEE;Jose;Lind;"b>8K8j@gDtb.y";ACTIVE;../fake-data/blob/hipster.txt
+10;TRAINNER;Bert;Turner;"GVG*@{i.#'_gNK";ACTIVE;../fake-data/blob/hipster.txt

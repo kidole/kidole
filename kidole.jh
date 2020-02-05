@@ -1,0 +1,331 @@
+/**
+ * The Profil entity.
+ * @author kidole
+ */
+ MAX_LENGHT=1024
+ MIN_LENGHT=3
+
+ MAX_INT=30
+ MIN_INT=0
+
+entity Profile {
+    /** Gender */
+    gender Gender required
+    /** photo */
+    photo  ImageBlob required
+    /** date_of_birth */
+    dateOfBirth Instant required
+    /** place_of_birth */
+    placeOfBbirth String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** club_origin */
+    clubOrigin String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** nationality */
+    nationality String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** height */
+    height Float required min(1) max(4)
+    /** weight */
+    weight  Float required min(5) max(500)
+    /** manuality */
+    manuality String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** nic */
+    nic String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** phone */
+    phone String required minlength(8) maxlength(MAX_LENGHT)
+    /** discipline */
+    discipline String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** categorie */
+    categorie String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** teamName */
+    teamName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** function */
+    functionOn String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** title */
+    titleAs String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** residentCity */
+    residentCity String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** pressID */
+    pressID String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** pressAgence */
+    pressAgence String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** bataillon_rattachement */
+    bataillonRattachement String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** social_denomination */
+    socialDenomination String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** location */
+    locationBuilding String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+entity Competition{
+    competitionName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    start Instant required
+    end Instant required
+    dateLimit Instant required
+    detail TextBlob required
+    rule AnyBlob required
+}
+
+entity Journee{
+
+    journeeName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+
+entity Team{
+
+    teamName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+entity Confrontation{
+
+    confrontationName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    startDate Instant required
+    endDate Instant required
+    confrontationDetails TextBlob
+}
+
+
+
+entity Score{
+    scoreName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    scoreIndex Integer required min(0)
+    scoreValue Double required
+    scoreUnit String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+
+entity Poules{
+
+    poulesName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+
+entity MatchSheet{
+
+    matchSheetName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    matchSheetResume TextBlob required
+    isfirst Boolean
+}
+
+entity Discipline{
+    disciplineName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    sexGender GenderSex required
+}
+entity Options{
+    optionsName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    optionsValue1 Boolean required
+    optionsValue2 Integer required min(0)
+}
+
+entity Delegation{
+    delegationName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    delegationCountry String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    delegationLocality String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    delegationCode String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+entity DelegationMembers{
+    delegationMembersState String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    delegationMembersCode String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    delegationMembersDetail TextBlob required
+}
+
+
+/**
+ * The Category entity.
+ * @author joel jorle
+ */
+entity Category {
+    categoryName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    yearlimit Integer required min(0)
+    teamLimitNumb Integer required min(0)
+    participantLimitByteam Integer required min(0)
+    categoryRule TextBlob required
+}
+
+/**
+ * The Phase entity.
+ * @author joel jorle
+ */
+entity Phase {
+    /** phaseName */
+    phaseName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    /** phaseNumber */
+    phaseNumber  Integer min (1)
+    /** phaseDayNumber */
+    phaseDayNumber  Integer min (1)
+}
+
+entity Localisation{
+    localisationName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    localisationLatitude Double required
+    localisationLongitude Double required
+    localisationCountry String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    localisationTown String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    localisationRegion String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    localisationLocality String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    isSite Boolean required
+}
+
+entity Format{
+    formatName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    winerQty Integer min(0)
+}
+
+entity Notification{
+    notificationTitle String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    notificationSubject String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    notificationUrl String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+    notificationImage ImageBlob required
+    notificationStatus NotificationState required
+    notificationType NotificationType required
+}
+
+// Prestataire authorities
+
+entity PrestationService {
+prestationServiceName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+prestationServiceNameState ServicesState required
+prestationServiceNameDetail TextBlob required
+prestationServiceNameImage ImageBlob
+}
+
+entity Rubrique {
+rubriqueName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+rubriqueDetails TextBlob required
+rubriqueImage ImageBlob
+}
+
+entity Files{
+fileName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+fileType String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+filePublic Boolean required
+fileToUpload AnyBlob required
+}
+
+entity CompetitionServicesOffer{
+competitionServicesOfferName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+competitionServicesOfferDetail TextBlob required
+competitionServicesOfferUrl String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+}
+
+entity Accreditation{
+accreditationName AccreditationList required
+firstName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+lastName String required minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+accreditationEmail String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) minlength(MIN_LENGHT) maxlength(MAX_LENGHT)
+accreditationStatus AccreditationState required
+accreditationDetail TextBlob required
+}
+
+entity AccreditationStep{
+   startTime Instant required
+   endTime Instant required
+   accreditationStepnumber Integer required
+   accreditationType AccreditationList required
+   isPublic Boolean
+   uri Boolean
+   fields TextBlob 
+}
+
+enum AccreditationState
+{
+ACTIVE,WAITTING,REJECT
+}
+
+enum AccreditationList{
+    ATHLETE,
+    SPARING,
+    TRAINNER,
+    TEAM_OFFICIAL,
+    ARBITRE,
+    COMMITY_MEMBER_LOCAL,
+    DIGNITAIRE,
+    SPECIAL_INVITEE,
+    COMMITY_MEMBER_NATIONAL,
+    VOLONTEER,
+    PRESS_AGENT,
+    SECURITY_AGENT,
+    SPONSOR,
+    PARTNER
+}
+
+enum NotificationType{
+    SMS,
+    EMAIL,
+    PUSH,
+    ALERT
+}
+
+enum ServicesState {
+ACCEPT,VIEW,REJECT
+}
+
+enum Gender{
+    MALE, FEMALE
+}
+
+enum GenderSex{
+    MALE, FEMALE,MIX
+}
+
+enum NotificationState {
+    READ,
+    UNREAD
+}
+
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Profile{user(firstName)} to User
+    Format{phase(phaseName)} to Phase
+    Score{team(teamName)} to Team
+    Confrontation{matchsheet(matchSheetName)} to MatchSheet
+    Confrontation{localisation(localisationName)} to Localisation
+    Delegation{delegateMember(delegationMembersCode)} to DelegationMembers
+    Profile{accreditation(accreditationName)} to Accreditation
+    PrestationService{rubrique(rubriqueName)} to Rubrique
+    CompetitionServicesOffer{rubric(rubriqueName)} to Rubrique
+}
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+    Discipline{competition(competitionName)} to Competition
+    Options{competition(competitionName)} to Competition
+    Category{discipline(disciplineName)} to Discipline
+    Notification{user(firstName)} to User
+    Competition{user(firstName)} to User
+    Team{user(firstName)} to User
+    DelegationMembers {user(firstName)} to User
+    Discipline{phase(phaseName)} to Phase
+    Files{user(firstName)} to User
+    PrestationService{user(firstName)} to User
+}
+
+/**
+ * One to many relationship.
+ */
+relationship OneToMany {
+    Competition{localise(localisationName)} to Localisation
+    Competition{accreditation(accreditationName)} to Accreditation // Une competiton a plusieurs Accredite
+    Competition{competitionService(competitionServicesOfferName)} to CompetitionServicesOffer // Une competition a plusieurs offres de services
+    Competition{accreditationStep(accreditationType)} to AccreditationStep   // Une competition a plusieurs etapes d'Accreditation
+    CompetitionServicesOffer{file(fileName)} to Files // Une offres de services a plusieurs fichiers
+    Confrontation{score(scoreName)} to Score
+    Confrontation{team(teamName)} to Team
+    Journee{confrontation(confrontationName)} to Confrontation
+    Phase{journnee(journeeName)} to Journee
+    Poules{team(teamName)} to Team
+    Competition{format(formatName)} to Format
+    Delegation{team(teamName)} to Team
+    PrestationService{files(fileName)} to Files
+    Rubrique{files(fileName)} to Files
+    Competition{files(fileName)} to Files
+    PrestationService{localisation(localisationName)} to Localisation
+}
+
+
+search * with elasticsearch
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

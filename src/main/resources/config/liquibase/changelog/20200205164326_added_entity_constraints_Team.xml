@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Team.
+    -->
+    <changeSet id="20200205164326-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="confrontation_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_confrontation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="confrontation"/>
+
+        <addForeignKeyConstraint baseColumnNames="poules_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_poules_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="poules"/>
+
+        <addForeignKeyConstraint baseColumnNames="delegation_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_delegation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="delegation"/>
+
+    </changeSet>
+</databaseChangeLog>

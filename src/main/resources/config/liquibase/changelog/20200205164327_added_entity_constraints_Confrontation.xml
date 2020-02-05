@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Confrontation.
+    -->
+    <changeSet id="20200205164327-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="matchsheet_id"
+                                 baseTableName="confrontation"
+                                 constraintName="fk_confrontation_matchsheet_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="match_sheet"/>
+
+        <addForeignKeyConstraint baseColumnNames="localisation_id"
+                                 baseTableName="confrontation"
+                                 constraintName="fk_confrontation_localisation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="localisation"/>
+
+        <addForeignKeyConstraint baseColumnNames="journee_id"
+                                 baseTableName="confrontation"
+                                 constraintName="fk_confrontation_journee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="journee"/>
+
+    </changeSet>
+</databaseChangeLog>

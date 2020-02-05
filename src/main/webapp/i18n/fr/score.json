@@ -1,0 +1,28 @@
+{
+  "kidoleApp": {
+    "score": {
+      "home": {
+        "title": "Scores",
+        "createLabel": "Créer un nouveau Score",
+        "createOrEditLabel": "Créer ou éditer un Score",
+        "search": "Recherche pour Score",
+        "notFound": "Aucun Score trouvé"
+      },
+      "created": "Un nouveau Score a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Score avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Score avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Score {{ id }} ?"
+      },
+      "detail": {
+        "title": "Score"
+      },
+      "scoreName": "Score Name",
+      "scoreIndex": "Score Index",
+      "scoreValue": "Score Value",
+      "scoreUnit": "Score Unit",
+      "team": "Team",
+      "confrontation": "Confrontation"
+    }
+  }
+}

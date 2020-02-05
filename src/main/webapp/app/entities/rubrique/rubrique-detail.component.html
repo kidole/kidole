@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rubrique">
+            <h2><span jhiTranslate="kidoleApp.rubrique.detail.title">Rubrique</span> {{rubrique.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.rubrique.rubriqueName">Rubrique Name</span></dt>
+                <dd>
+                    <span>{{rubrique.rubriqueName}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.rubrique.rubriqueDetails">Rubrique Details</span></dt>
+                <dd>
+                    <span>{{rubrique.rubriqueDetails}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.rubrique.rubriqueImage">Rubrique Image</span></dt>
+                <dd>
+                    <div *ngIf="rubrique.rubriqueImage">
+                        <a (click)="openFile(rubrique.rubriqueImageContentType!, rubrique.rubriqueImage)">
+                            <img [src]="'data:' + rubrique.rubriqueImageContentType + ';base64,' + rubrique.rubriqueImage" style="max-width: 100%;" alt="rubrique image"/>
+                        </a>
+                        {{rubrique.rubriqueImageContentType}}, {{byteSize(rubrique.rubriqueImage)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rubrique', rubrique.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+{
+    "name": "CompetitionServicesOffer",
+    "fields": [
+        {
+            "fieldName": "competitionServicesOfferName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "competitionServicesOfferDetail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "competitionServicesOfferUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "rubrique",
+            "otherEntityRelationshipName": "competitionServicesOffer",
+            "relationshipName": "rubric",
+            "otherEntityField": "rubriqueName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "competitionServicesOffer",
+            "relationshipName": "file"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "competitionService",
+            "relationshipName": "competition",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164343",
+    "entityTableName": "competition_services_offer",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

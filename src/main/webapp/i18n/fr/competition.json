@@ -1,0 +1,35 @@
+{
+  "kidoleApp": {
+    "competition": {
+      "home": {
+        "title": "Competitions",
+        "createLabel": "Créer un nouveau Competition",
+        "createOrEditLabel": "Créer ou éditer un Competition",
+        "search": "Recherche pour Competition",
+        "notFound": "Aucun Competition trouvé"
+      },
+      "created": "Un nouveau Competition a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Competition avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Competition avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Competition {{ id }} ?"
+      },
+      "detail": {
+        "title": "Competition"
+      },
+      "competitionName": "Competition Name",
+      "start": "Start",
+      "end": "End",
+      "dateLimit": "Date Limit",
+      "detail": "Detail",
+      "rule": "Rule",
+      "localise": "Localise",
+      "accreditation": "Accreditation",
+      "competitionService": "Competition Service",
+      "accreditationStep": "Accreditation Step",
+      "format": "Format",
+      "files": "Files",
+      "user": "User"
+    }
+  }
+}

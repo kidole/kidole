@@ -1,0 +1,11 @@
+id;start_time;end_time;accreditation_stepnumber;accreditation_type;is_public;uri;fields
+1;2020-02-05T08:10:43;2020-02-04T18:15:38;75856;SPECIAL_INVITEE;false;true;../fake-data/blob/hipster.txt
+2;2020-02-05T01:40:54;2020-02-05T14:29:46;19974;SPECIAL_INVITEE;false;true;../fake-data/blob/hipster.txt
+3;2020-02-05T09:20:53;2020-02-05T14:25:17;48262;DIGNITAIRE;true;false;../fake-data/blob/hipster.txt
+4;2020-02-05T06:12:23;2020-02-05T09:29:42;26976;TRAINNER;true;false;../fake-data/blob/hipster.txt
+5;2020-02-05T12:07:49;2020-02-05T03:32:38;85509;SPONSOR;true;false;../fake-data/blob/hipster.txt
+6;2020-02-05T15:58:03;2020-02-05T11:43:00;64125;SPONSOR;false;true;../fake-data/blob/hipster.txt
+7;2020-02-05T08:19:22;2020-02-05T12:06:18;98051;COMMITY_MEMBER_NATIONAL;true;true;../fake-data/blob/hipster.txt
+8;2020-02-05T14:56:46;2020-02-04T23:40:12;89049;PRESS_AGENT;true;true;../fake-data/blob/hipster.txt
+9;2020-02-04T21:36:29;2020-02-04T18:14:54;50786;SPECIAL_INVITEE;false;true;../fake-data/blob/hipster.txt
+10;2020-02-04T18:56:19;2020-02-05T09:15:18;30724;VOLONTEER;false;false;../fake-data/blob/hipster.txt

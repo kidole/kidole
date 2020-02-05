@@ -1,0 +1,109 @@
+{
+    "name": "Competition",
+    "fields": [
+        {
+            "fieldName": "competitionName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "start",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "end",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateLimit",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rule",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "localisation",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "localise"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "accreditation",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "accreditation"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "competitionServicesOffer",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "competitionService"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "accreditationStep",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "accreditationStep"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "format",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "format"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "files",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "files"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "user",
+            "otherEntityField": "firstName"
+        }
+    ],
+    "changelogDate": "20200205164324",
+    "entityTableName": "competition",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

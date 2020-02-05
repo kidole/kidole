@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="kidoleApp.notification.detail.title">Notification</span> {{notification.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kidoleApp.notification.notificationTitle">Notification Title</span></dt>
+                <dd>
+                    <span>{{notification.notificationTitle}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.notificationSubject">Notification Subject</span></dt>
+                <dd>
+                    <span>{{notification.notificationSubject}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.notificationUrl">Notification Url</span></dt>
+                <dd>
+                    <span>{{notification.notificationUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.notificationImage">Notification Image</span></dt>
+                <dd>
+                    <div *ngIf="notification.notificationImage">
+                        <a (click)="openFile(notification.notificationImageContentType!, notification.notificationImage)">
+                            <img [src]="'data:' + notification.notificationImageContentType + ';base64,' + notification.notificationImage" style="max-width: 100%;" alt="notification image"/>
+                        </a>
+                        {{notification.notificationImageContentType}}, {{byteSize(notification.notificationImage)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.notificationStatus">Notification Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.NotificationState.' + notification.notificationStatus}}">{{notification.notificationStatus}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.notificationType">Notification Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'kidoleApp.NotificationType.' + notification.notificationType}}">{{notification.notificationType}}</span>
+                </dd>
+                <dt><span jhiTranslate="kidoleApp.notification.user">User</span></dt>
+                <dd>
+                    {{notification.userFirstName}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

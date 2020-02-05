@@ -1,0 +1,32 @@
+{
+  "kidoleApp": {
+    "localisation": {
+      "home": {
+        "title": "Localisations",
+        "createLabel": "Create a new Localisation",
+        "createOrEditLabel": "Create or edit a Localisation",
+        "search": "Search for Localisation",
+        "notFound": "No Localisations found"
+      },
+      "created": "A new Localisation is created with identifier {{ param }}",
+      "updated": "A Localisation is updated with identifier {{ param }}",
+      "deleted": "A Localisation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Localisation {{ id }}?"
+      },
+      "detail": {
+        "title": "Localisation"
+      },
+      "localisationName": "Localisation Name",
+      "localisationLatitude": "Localisation Latitude",
+      "localisationLongitude": "Localisation Longitude",
+      "localisationCountry": "Localisation Country",
+      "localisationTown": "Localisation Town",
+      "localisationRegion": "Localisation Region",
+      "localisationLocality": "Localisation Locality",
+      "isSite": "Is Site",
+      "competition": "Competition",
+      "prestationService": "Prestation Service"
+    }
+  }
+}

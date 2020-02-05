@@ -1,0 +1,11 @@
+{
+  "kidoleApp": {
+    "NotificationType": {
+      "null": "",
+      "SMS": "SMS",
+      "EMAIL": "EMAIL",
+      "PUSH": "PUSH",
+      "ALERT": "ALERT"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Journee",
+    "fields": [
+        {
+            "fieldName": "journeeName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 1024
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "confrontation",
+            "otherEntityRelationshipName": "journee",
+            "relationshipName": "confrontation"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "phase",
+            "otherEntityRelationshipName": "journnee",
+            "relationshipName": "phase",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200205164325",
+    "entityTableName": "journee",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

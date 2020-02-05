@@ -1,0 +1,26 @@
+{
+  "kidoleApp": {
+    "format": {
+      "home": {
+        "title": "Formats",
+        "createLabel": "Créer un nouveau Format",
+        "createOrEditLabel": "Créer ou éditer un Format",
+        "search": "Recherche pour Format",
+        "notFound": "Aucun Format trouvé"
+      },
+      "created": "Un nouveau Format a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Format avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Format avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Format {{ id }} ?"
+      },
+      "detail": {
+        "title": "Format"
+      },
+      "formatName": "Format Name",
+      "winerQty": "Winer Qty",
+      "phase": "Phase",
+      "competition": "Competition"
+    }
+  }
+}
